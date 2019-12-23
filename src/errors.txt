@@ -1,0 +1,23 @@
+[18-Dec-2019 16:39:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Seerbit\Config::getLogger() in /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php:134
+Stack trace:
+#0 /Applications/MAMP/htdocs/seerbit/src/Seerbit/Service.php(41): Seerbit\HttpClient\CurlClient->requestPost(Object(Seerbit\Service\Authenticate), 'auth', Array)
+#1 /Applications/MAMP/htdocs/seerbit/src/Seerbit/Service/Authenticate.php(20): Seerbit\Service->sendPost(Array)
+#2 /Applications/MAMP/htdocs/seerbit/src/index.php(18): Seerbit\Service\Authenticate->GetToken()
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php on line 134
+[18-Dec-2019 16:40:52 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Seerbit\HttpClient\CurlClient::curlSetHttpProxy(), 1 passed in /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php on line 148 and exactly 2 expected in /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php:109
+Stack trace:
+#0 /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php(148): Seerbit\HttpClient\CurlClient->curlSetHttpProxy(Resource id #33)
+#1 /Applications/MAMP/htdocs/seerbit/src/Seerbit/Service.php(41): Seerbit\HttpClient\CurlClient->requestPost(Object(Seerbit\Service\Authenticate), 'auth', Array)
+#2 /Applications/MAMP/htdocs/seerbit/src/Seerbit/Service/Authenticate.php(20): Seerbit\Service->sendPost(Array)
+#3 /Applications/MAMP/htdocs/seerbit/src/index.php(18): Seerbit\Service\Authenticate->GetToken()
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php on line 109
+[18-Dec-2019 16:41:14 UTC] PHP Fatal error:  Uncaught Error: Class 'Adyen\ConnectionException' not found in /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php:238
+Stack trace:
+#0 /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php(184): Seerbit\HttpClient\CurlClient->handleCurlError('auth', 6, 'Could not resol...', Object(Monolog\Logger))
+#1 /Applications/MAMP/htdocs/seerbit/src/Seerbit/Service.php(41): Seerbit\HttpClient\CurlClient->requestPost(Object(Seerbit\Service\Authenticate), 'auth', Array)
+#2 /Applications/MAMP/htdocs/seerbit/src/Seerbit/Service/Authenticate.php(20): Seerbit\Service->sendPost(Array)
+#3 /Applications/MAMP/htdocs/seerbit/src/index.php(18): Seerbit\Service\Authenticate->GetToken()
+#4 {main}
+  thrown in /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php on line 238
