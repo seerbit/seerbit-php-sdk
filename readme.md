@@ -31,7 +31,9 @@ composer require seerbit/php-library-v1
 
 ### Examples ###
 
-Create Payment Request on Test:
+Validate a transaction:
+
+Find more examples [**here**](./src/Examples) 
 ```php
 
 use Seerbit\Client;
