@@ -1,4 +1,15 @@
-# SeerBit's APIs Library for PHP (Version 1)
+<div align="center">
+ <img width="200" valign="top" src="https://res.cloudinary.com/dy2dagugp/image/upload/v1571249658/seerbit-logo_mdinom.png">
+</div>
+
+
+<h1 align="center">
+  <img width="60" valign="bottom" src="https://www.php.net/images/logos/php-logo.svg">
+  - SeerBit
+</h1>
+
+
+# SeerBit's API Library for PHP (Version 1)
 
 SeerBit PHP Library for easy integration with SeerBit's API.
 
@@ -33,7 +44,6 @@ composer require seerbit/php-library-v1
 
 Validate a transaction:
 
-Find more examples [**here**](./src/Examples) 
 ```php
 
 use Seerbit\Client;
@@ -73,7 +83,7 @@ $authService = new Authenticate($client);
 
 
 ```
-
+Find more examples [**here**](./src/Examples) 
 
 ## Documentation ##
 * https://doc.seerbit.com/v/master/api/library
