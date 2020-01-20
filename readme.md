@@ -22,7 +22,7 @@ The Library supports all APIs under the following services:
 * Transaction Status
 
 ## Requirements
-PHP 5.3 or higher
+PHP 5.5 or higher
 
 ## Installation ##
 You can use Composer or simply Download the Release
@@ -36,9 +36,6 @@ composer installed.
 
 Once composer is installed, execute the following command in your project root to install this library:
 
-```sh
-composer require seerbit/php-library-v1
-```
 
 ### Examples ###
 

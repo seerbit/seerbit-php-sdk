@@ -1,6 +1,6 @@
 {
   "name": "seerbit/seerbit-php-v1",
-  "description": "The Official SeerBit PHP Library for API Integration",
+  "description": "SeerBit API Library for PHP (Version 1) ",
   "version": "1.0.0",
   "keywords": ["seerbit", "payment","api"],
   "homepage": "https://seerbit.com",
