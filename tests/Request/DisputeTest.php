@@ -14,8 +14,7 @@ class DisputeTest extends TestCase
 {
 
     public function testDisputesList(){
-        $config = (parse_ini_file("../config/test.ini",true));
-        var_dump($config);
+
         $client = new Client();
         try {
             $client->setEnvironment(\Seerbit\Environment::LIVE);
