@@ -3,7 +3,6 @@
 namespace Seerbit\HttpClient;
 
 use Seerbit\SeerbitException;
-use SeerBit\Service;
 use Seerbit\Service\IService;
 
 
@@ -81,7 +80,7 @@ class CurlClient implements IClient
         if ($httpStatus != 200 && $result) {
             $this->handleResultError($result, $logger);
         } elseif (!$result) {
-            $this->handleCurlError($requestUrl, $errno, $message, $logger);
+            $this->handleCurlError($requestUrl,json_decode($result, true), $errno, $message, $logger);
         }
 
         // result in array or json
@@ -159,7 +158,7 @@ class CurlClient implements IClient
         if ($httpStatus != 200 && $result) {
             $this->handleResultError($result, $logger);
         } elseif (!$result) {
-            $this->handleCurlError($requestUrl, $errno, $message, $logger);
+            $this->handleCurlError($requestUrl,json_decode($result, true), $errno, $message, $logger);
         }
 
         // result in array or json
@@ -246,7 +245,7 @@ class CurlClient implements IClient
         if ($httpStatus != 200 && $result) {
             $this->handleResultError($result, $logger);
         } elseif (!$result) {
-            $this->handleCurlError($requestUrl, $errno, $message, $logger);
+            $this->handleCurlError($requestUrl,json_decode($result, true), $errno, $message, $logger);
         }
 
         // result in array or json
@@ -263,7 +262,7 @@ class CurlClient implements IClient
 
     }
 
-    protected function handleCurlError($url, $errno, $message, $logger)
+    protected function handleCurlError($url,$result, $errno, $message, $logger)
     {
         switch ($errno) {
             case CURLE_OK:
@@ -282,9 +281,10 @@ class CurlClient implements IClient
                     . "If this problem persists,";
                 break;
             default:
-                $msg = "Unexpected error communicating with Seerbit.";
+                $msg = "Unexpected error communicating with Seerbit Server.";
         }
         $msg .= "\n(Network error [errno $errno]: $message)";
+        $msg .= "\n(Network error [result $errno]: $result)";
         $logger->error($msg);
         throw new \Seerbit\ConnectionException($msg, $errno);
     }
@@ -292,19 +292,18 @@ class CurlClient implements IClient
     protected function handleResultError($result, $logger)
     {
         $decodeResult = json_decode($result, true);
-        if (isset($decodeResult['message']) && isset($decodeResult['errorCode'])) {
-            $logger->error($decodeResult['errorCode'] . ': ' . $decodeResult['message']);
+        if (isset($decodeResult['message']) && isset($decodeResult['responseCode'])) {
+            $logger->error($decodeResult['responseCode'] . ': ' . $decodeResult['message']);
             throw new SeerbitException(
                 $decodeResult['message'],
-                $decodeResult['errorCode'],
+                $decodeResult['responseCode'],
                 null,
                 $decodeResult['status'],
-                $decodeResult['errorType'],
-                isset($decodeResult['pspReference']) ? $decodeResult['pspReference'] : null
+                $decodeResult['timestamp']
             );
         }
         $logger->error($result);
-        throw new SeerbitException($result);
+        throw new SeerbitException($decodeResult);
     }
 
     private function logRequest(\Psr\Log\LoggerInterface $logger, $requestUrl, $params)

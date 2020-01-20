@@ -26,30 +26,24 @@ class DisputeService extends MerchantService implements ITransformable
         return $this;
     }
 
-    public function find($business_id,$dispute_id, $from = 0, $to = 10){
+    public function find($business_id,$dispute_id){
         $this->requiresToken = true;
         $this->result = $this->getRequest("merchants/api/v1/user/{$business_id}/disputes/{$dispute_id}", $this->token);
         return $this;
     }
 
-    public function add($business_id,$payload){
+
+    public function update($business_id,$dispute_ref,$payload){
         $this->requiresToken = true;
-        $this->result = $this->postRequest("merchants/api/v1/user/{$business_id}/disputes",$payload, $this->token);
+        $this->result = $this->putRequest("merchants/api/v1/user/{$business_id}/disputes/{$dispute_ref}",$payload, $this->token);
         return $this;
     }
 
-    public function close($business_id,$dispute_id,$payload){
+    public function accept($business_id,$dispute_ref,$action_type){
         $this->requiresToken = true;
-        $this->result = $this->putRequest("merchants/api/v1/user/{$business_id}/disputes/{$dispute_id}/close",$payload, $this->token);
+        $this->result = $this->putRequest("merchants/api/v1/user/{$business_id}/disputes/{$dispute_ref}/{$action_type}",null, $this->token);
         return $this;
     }
-
-    public function update($business_id,$payload){
-        $this->requiresToken = true;
-        $this->result = $this->putRequest("merchants/api/v1/user/{$business_id}/disputes",$payload, $this->token);
-        return $this;
-    }
-
 
     public function toArray(){
         return $this->result;

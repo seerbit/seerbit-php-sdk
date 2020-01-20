@@ -14,34 +14,30 @@ class SeerbitException extends Exception
     /**
      * @var null
      */
-    protected $errorType;
+    protected $timestamp;
+
+    protected $code;
+
 
     /**
-     * @var string
-     */
-    protected $pspReference;
-
-    /**
-     * AdyenException constructor.
+     * SeerBitException constructor.
      *
      * @param string $message
      * @param int $code
      * @param Exception|null $previous
      * @param string|null $status
-     * @param string|null $errorType
-     * @param string|null $pspReference
+     * @param string|null $timestamp
      */
     public function __construct(
         $message = "",
         $code = 0,
         Exception $previous = null,
         $status = null,
-        $errorType = null,
-        $pspReference = null
+        $timestamp = null
     ) {
         $this->status = $status;
-        $this->errorType = $errorType;
-        $this->pspReference = $pspReference;
+        $this->timestamp = $timestamp;
+        $this->code = $code;
         parent::__construct($message, (int)$code, $previous);
     }
 
@@ -55,21 +51,17 @@ class SeerbitException extends Exception
         return $this->status;
     }
 
-    /**
-     * Get Adyen Error type
-     *
-     * @return string|null
-     */
-    public function getErrorType()
+    public function getTimestamp()
     {
-        return $this->errorType;
+        return $this->timestamp;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getPspReference()
+    public function getErrorCode()
     {
-        return $this->pspReference;
+        return $this->code;
     }
+
+
+
+
 }

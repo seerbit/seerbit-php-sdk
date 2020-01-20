@@ -22,17 +22,42 @@ class MerchantAuthentication extends MerchantService implements IAuthenticate
 
     public function getToken(){
         if ($this->result){
-            return $this->result['payload']['token'];
+            if (array_key_exists('payload',$this->result )){
+                if (array_key_exists('token',$this->result['payload'] )){
+                    return $this->result['payload']['token'];
+                }else{
+                    return null;
+                }
+            }else{
+                return null;
+            }
+        }else{
+            return null;
         }
-        return null;
     }
 
     public function toArray(){
-        return $this->result;
+        if ($this->result){
+            if (array_key_exists('payload',$this->result )){
+                return $this->result['payload'];
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
     }
 
     public function toJson(){
-        return json_encode($this->result);
+        if ($this->result){
+            if (array_key_exists('payload',$this->result )){
+                return json_encode($this->result['payload']);
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
     }
 
 }

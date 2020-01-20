@@ -34,7 +34,7 @@ class RefundService extends MerchantService implements ITransformable
 
     public function find($business_id,$refund_ref, $from = 0, $to = 10){
         $this->requiresToken = true;
-        $this->result = $this->getRequest("merchants/api/v1/user/{$business_id}/refunds/ref/{$refund_ref}", $this->token);
+        $this->result = $this->getRequest("merchants/api/v1/user/{$business_id}/refunds/{$refund_ref}", $this->token);
         return $this;
     }
 

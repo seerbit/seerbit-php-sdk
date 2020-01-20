@@ -22,6 +22,7 @@ class CardService extends TransactionService implements ITransformable
 
     public function Authorize($payload){
         $this->setRequiresToken(true);
+        $payload['public_key'] = $this->getClient()->getPublicKey();
         $this->result = $this->postRequest("sbt/api/card/v1/init/transaction",$payload, $this->token);
         return $this;
     }

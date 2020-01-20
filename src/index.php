@@ -14,9 +14,9 @@ require __DIR__.'/../vendor/autoload.php';
 
 try {
 $client = new Client();
-$client->setEnvironment(\Seerbit\Environment::LIVE);
-$client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
-$client->setPrivateKey("SBTESTSECK_9CDyHxbubCHnqJba5iiIytD5TLyySiHNvBY1UhPX");
+$client->setEnvironment(\Seerbit\Environment::PILOT);
+$client->setPublicKey("SBSECK_DWZ6LTTJW78LFT1LIXNBFDFIMBJJ3NLASDTCO8IP");
+$client->setPrivateKey("SBPUBK_ES14RXZQ2IRICCPUYWHFC8BJNTHK1IML");
 $client->setTimeout(20);
 
 
@@ -24,6 +24,8 @@ $authService = new Authenticate($client);
 
 $token = $authService->GetToken()->toArray();
 
+var_dump($token);
+exit();
 //$cardService = new Card($client, $token['access_token']);
 //$transactionService = new Transaction($client, $token['access_token']);
 //$accountService = new Account($client, $token['access_token']);

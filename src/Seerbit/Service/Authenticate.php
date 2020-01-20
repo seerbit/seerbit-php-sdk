@@ -21,7 +21,6 @@ class Authenticate extends TransactionService implements IAuthenticate
         return $this;
     }
 
-
     public function toArray(){
         return $this->result;
     }
@@ -33,8 +32,13 @@ class Authenticate extends TransactionService implements IAuthenticate
 
     public function getToken(){
         if ($this->result){
-            return $this->result['access_token'];
+            if (array_key_exists('access_token',$this->result)){
+                return $this->result['access_token'];
+            }else{
+                return null;
+            }
+        }else{
+            return null;
         }
-        return null;
     }
 }

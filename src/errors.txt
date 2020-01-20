@@ -21,3 +21,7 @@ Stack trace:
 #3 /Applications/MAMP/htdocs/seerbit/src/index.php(18): Seerbit\Service\Authenticate->GetToken()
 #4 {main}
   thrown in /Applications/MAMP/htdocs/seerbit/src/Seerbit/HttpClient/CurlClient.php on line 238
+[27-Dec-2019 11:20:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on null in /Applications/MAMP/htdocs/seerbit/src/index.php:25
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/seerbit/src/index.php on line 25

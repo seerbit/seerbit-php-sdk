@@ -29,12 +29,6 @@ class TransactionService implements IService
             throw new \Seerbit\SeerbitException($msg);
         }
 
-//
-//        if (!$client->getConfig()->get('version')) {
-//            // throw exception
-//            $msg = "The client does not have a correct API version. Set a version using the Client.";
-//            throw new \Seerbit\SeerbitException($msg);
-//        }
 
         if (!$client->getConfig()->get('publicKey')) {
             // throw exception

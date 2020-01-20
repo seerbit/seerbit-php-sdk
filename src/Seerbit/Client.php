@@ -1,8 +1,6 @@
 <?php
 namespace Seerbit;
 
-use \Seerbit\Config;
-use \Seerbit\Service\Authenticate;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
@@ -10,7 +8,7 @@ use Monolog\Handler\StreamHandler;
 class Client{
 
     const VERSION = '0.0.1';
-    const ENDPOINT_PILOT = "https://pilot-backend.seerbitapi.com/sbt/api/";
+    const ENDPOINT_PILOT = "https://pilot-backend.seerbitapi.com/";
     const ENDPOINT_LIVE = "https://stg-backend.seerbitapi.com/";
 
     private $config;
@@ -67,7 +65,7 @@ class Client{
 
     public function getPrivateKey()
     {
-        $this->config->get('privateKey');
+        return $this->config->get('privateKey');
     }
 
     public function setConfig($config)
@@ -121,6 +119,12 @@ class Client{
     public function setTimeout($value)
     {
         $this->config->set('timeout', $value);
+    }
+
+
+    public function getTimeout()
+    {
+        return $this->config->get('timeout');
     }
 
 

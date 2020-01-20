@@ -1,10 +1,11 @@
 <?php
 
 
-namespace Seerbit\Service;
+namespace Seerbit\Service\Account;
 
 use Seerbit\Client;
-use Seerbit\Service;
+use Seerbit\Service\ITransformable;
+use Seerbit\Service\TransactionService;
 
 class AccountService extends TransactionService implements ITransformable
 {
