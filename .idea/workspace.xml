@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/config/test.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Request/DisputeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/DisputeTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +18,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.1">
     <include_path>
@@ -127,7 +124,7 @@
       <workItem from="1578580292499" duration="10667000" />
       <workItem from="1578940211541" duration="23795000" />
       <workItem from="1579268290641" duration="317000" />
-      <workItem from="1579508725137" duration="8078000" />
+      <workItem from="1579508725137" duration="8406000" />
     </task>
     <servers />
   </component>
