@@ -36,6 +36,9 @@ composer installed.
 
 Once composer is installed, execute the following command in your project root to install this library:
 
+```sh
+composer require seerbit/seerbit-php-v1
+```
 
 ### Examples ###
 
