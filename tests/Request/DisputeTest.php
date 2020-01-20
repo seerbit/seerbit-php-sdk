@@ -118,17 +118,19 @@ class DisputeTest extends TestCase
                 "resolution_image" => null,
                 "merchant_id" => "00000063",
                 "amount" => "102.51",
-                "evidence" =>  [
+                "evidence" =>  (array)[
+                    (object)[
                     "message" => "Buyer didnt receive value",
                     "msg_sender" => "merchant",
                     "images" => [ (object)["image" => ""]]
+                        ]
                 ]
             ];
             $all_disputes = $dispute_service->update("00000063","bf3e2fee9bda491199b15a661cf31713", $dispute_payload);
 
-            $this->assertArrayHasKey("payload", $all_disputes->toArray());
+            $this->assertArrayHasKey("dispute_ref", $all_disputes->toArray());
 
-            $this->assertNotNull($all_disputes->toArray()['payload']);
+            $this->assertNotNull($all_disputes->toArray());
             $this->assertEquals("00", $all_disputes->toArray()['responseCode']);
         }catch (SeerbitException $e){
 

@@ -189,11 +189,12 @@ class CurlClient implements IClient
         //Initiate cURL.
         $ch = curl_init($requestUrl);
 
-        //Tell cURL that we want to send a POST request.
-        curl_setopt($ch, CURLOPT_PUT, true);
+        //Tell cURL that we want to send a PUT request.
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 
         //Attach our encoded JSON string to the POST fields.
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonRequest);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$jsonRequest);
 
         //Set the content type to application/json
         $headers = array(

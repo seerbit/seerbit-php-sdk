@@ -89,7 +89,7 @@ Find more examples [**here**](./src/Examples)
 * https://doc.seerbit.com/v/master/api/library
 
 ## Support
-If you have any problems, questions or suggestions, create an issue here or send your inquiry to support@seerbit.com.
+If you have any problems, questions or suggestions, create an issue here or send your inquiry to care@seerbit.com.
 
 ## Contributing
 We strongly encourage you to join us in contributing to this repository so everyone can benefit from:

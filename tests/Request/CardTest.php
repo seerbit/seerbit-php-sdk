@@ -14,8 +14,8 @@ class CardTest extends TestCase
 
     public function testTransactionServiceAuth(){
         $client = new Client();
-        $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
-        $client->setPrivateKey("SBTESTSECK_9CDyHxbubCHnqJba5iiIytD5TLyySiHNvBY1UhPX");
+        $client->setPublicKey("SBPUBK_OMX6ZNRZPLIHQ9Y0ZG6FCNR0EAYIGIAT");
+        $client->setPrivateKey("SBSECK_P18STKMKODQF9ZUYMSPNHVTU9JMWJRPKZO1HJM5R");
 
         $client->setEnvironment(\Seerbit\Environment::LIVE);
 
@@ -44,7 +44,7 @@ class CardTest extends TestCase
           "description": "Integration Transaction",
           "country": "NG",
           "fee": "1.00",
-          "amount": "250.00",
+          "amount": "20.00",
           "tranref":"",
           "clientappcode":"app1",
           "callbackurl":"http://testing-test.surge.sh",

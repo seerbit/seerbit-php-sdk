@@ -14,8 +14,8 @@ class AuthenticationTest extends TestCase
 
     public function testTransactionServiceAuth(){
         $client = new Client();
-        $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
-        $client->setPrivateKey("SBTESTSECK_9CDyHxbubCHnqJba5iiIytD5TLyySiHNvBY1UhPX");
+        $client->setPublicKey("SBPUBK_OMX6ZNRZPLIHQ9Y0ZG6FCNR0EAYIGIAT");
+        $client->setPrivateKey("SBSECK_P18STKMKODQF9ZUYMSPNHVTU9JMWJRPKZO1HJM5R");
 
         $client->setEnvironment(\Seerbit\Environment::LIVE);
 
@@ -40,8 +40,8 @@ class AuthenticationTest extends TestCase
     public function testMerchantServiceAuth(){
         $client = new Client();
         $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setUsername("victorighalo@gmail.com");
-        $client->setPassword("WISdom@1");
+        $client->setUsername("centricgateway@gmail.com ");
+        $client->setPassword("8b432b4932f349518f6a82ae326ada10");
 
         //Instantiate Authentication Service
         $authService = new MerchantAuthentication($client);

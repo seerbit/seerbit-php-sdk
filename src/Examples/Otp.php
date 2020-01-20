@@ -15,18 +15,10 @@ try {
     //Configure SeerBit Client
     $client->setEnvironment(\Seerbit\Environment::LIVE);
 
-    //PILOT CREDENTIALS
-//    $client->setPublicKey("SBPUBK_ES14RXZQ2IRICCPUYWHFC8BJNTHK1IML");
-//    $client->setPrivateKey("SBSECK_DWZ6LTTJW78LFT1LIXNBFDFIMBJJ3NLASDTCO8IP");
-
     //PRODUCTION CREDENTIALS
-//    $client->setPublicKey("SBTESTPUBK_7QvjzOsvnWVKjDosScLHmlhr4rowXaQG");
-//    $client->setPrivateKey("SBTESTSECK_ZFDCdIpgm0aidsNCA5X36zTrlsOs9SsGPtHWDLF8");
-
-    //PRODUCTION CREDENTIALS
-    $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
-    $client->setPrivateKey("SBTESTSECK_9CDyHxbubCHnqJba5iiIytD5TLyySiHNvBY1UhPX");
-    $client->setTimeout(20);
+    $client->setPublicKey("PUBLIC KEY");
+    $client->setPrivateKey("PRIVATE KEY");
+    $client->setTimeout(20);//OPTIONAL
 
     //Instantiate Authentication Service
     $authService = new Authenticate($client);
