@@ -9,7 +9,7 @@ class Client{
 
     const VERSION = '0.0.1';
     const ENDPOINT_PILOT = "https://pilot-backend.seerbitapi.com/";
-    const ENDPOINT_LIVE = "https://stg-backend.seerbitapi.com/";
+    const ENDPOINT_LIVE = "https://seerbitapi.com/";
 
     private $config;
 

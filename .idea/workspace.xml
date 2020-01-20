@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/config/test.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Account.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/AccountOtp.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/AccountOtp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Card.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Card.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Dispute.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Dispute.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Otp.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Otp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Refund.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Refund.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/TransactionStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/TransactionStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/HttpClient/CurlClient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/HttpClient/CurlClient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Seerbit/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Client.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Seerbit/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Request/AuthenticationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/AuthenticationTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Request/CardTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/CardTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Request/DisputeTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/DisputeTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -136,7 +127,7 @@
       <workItem from="1578580292499" duration="10667000" />
       <workItem from="1578940211541" duration="23795000" />
       <workItem from="1579268290641" duration="317000" />
-      <workItem from="1579508725137" duration="7201000" />
+      <workItem from="1579508725137" duration="8078000" />
     </task>
     <servers />
   </component>
