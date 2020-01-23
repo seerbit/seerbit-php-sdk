@@ -67,10 +67,9 @@ $authService = new Authenticate($client);
 
     if ($card_auth_token){
 
-        //Instantiate Card Service
+        //Instantiate Transaction Service
         $transaction_service =  New TransactionStatusService($client, $card_auth_token);
 
-        //Build OTP PayLoad
         $transaction_reference = "TRANSACTION REFERENCE";
 
         //Validate Transaction
