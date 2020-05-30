@@ -31,11 +31,15 @@ try {
         //Instantiate Card Service
         $card_service =  New TransactionStatusService($client, $card_auth_token);
 
-        $transaction_reference = "SKNKMKNKS8888";
+        $transaction_reference = "bc3b3a66-ffd4-49f5-ac32-432765bbf371";
 
         //Validate Transaction
-        $transaction = $card_service->ValidateStatus($transaction_reference);
-        echo($transaction->toJson());
+        try {
+            $transaction = $card_service->ValidateStatus($transaction_reference);
+            echo($transaction->toJson());
+        }catch (\Seerbit\SeerbitException $e){
+            echo($e->getMessage());
+        }
 
     }else{
         echo 'Authentication failed';

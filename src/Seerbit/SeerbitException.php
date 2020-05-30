@@ -2,9 +2,9 @@
 
 namespace Seerbit;
 
-use Exception;
 
-class SeerbitException extends Exception
+
+class SeerbitException extends \Exception
 {
     /**
      * @var null
