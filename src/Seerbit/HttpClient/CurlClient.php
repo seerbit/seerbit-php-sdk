@@ -43,7 +43,7 @@ class CurlClient implements IClient
 
         // set authorisation credentials according to support & availability
         if ($service->requiresToken()) {
-            if(count($token) < 1){
+            if(strlen($token) < 1){
                 $msg = "Please provide an Authentication token";
                 throw new SeerbitException($msg);
             }else{
@@ -90,7 +90,7 @@ class CurlClient implements IClient
             $result = json_decode($result, true);
 
             // log the array result
-            $logger->info('Params in response from Seerbit:' . print_r($result, 1));
+            $logger->info('Params in response from SeerBit: ' . print_r($result, 1));
         }
 
             return $result;
@@ -154,21 +154,19 @@ class CurlClient implements IClient
 
         curl_close($ch);
 
-        // result not 200 ... throw error
-        if ($httpStatus != 200 && $result) {
+        if (in_array($httpStatus, [200,201]) && $result) {
             $this->handleResultError($result, $logger);
         } elseif (!$result) {
             $this->handleCurlError($requestUrl,json_decode($result, true), $errno, $message, $logger);
         }
 
+        // log the array result
+        $logger->info('Params in response from Seerbit:' . print_r($result, 1));
+
         // result in array or json
         if ($config->getOutputType() == 'array') {
-
             // transform to PHP Array
             $result = json_decode($result, true);
-
-            // log the array result
-            $logger->info('Params in response from Seerbit:' . print_r($result, 1));
         }
 
         return $result;
@@ -292,19 +290,26 @@ class CurlClient implements IClient
 
     protected function handleResultError($result, $logger)
     {
+
         $decodeResult = json_decode($result, true);
-        if (isset($decodeResult['message']) && isset($decodeResult['responseCode'])) {
-            $logger->error($decodeResult['responseCode'] . ': ' . $decodeResult['message']);
-            throw new SeerbitException(
-                $decodeResult['message'],
-                $decodeResult['responseCode'],
-                null,
-                $decodeResult['status'],
-                $decodeResult['timestamp']
-            );
+
+        if ($result) {
+            if (isset($decodeResult['message'])) {
+                $logger->error($decodeResult['message']);
+                throw new SeerbitException(
+                    $decodeResult['message'],
+                    "-00",
+                    null,
+                    400,
+                    time()
+                );
+            }
+            $logger->error($result);
+            throw new SeerbitException("Error making HTTP request to SeerBit server", 500, null, "Server Error", time());
+        }else{
+            $logger->error($result);
+            throw new SeerbitException("Error making HTTP request to SeerBit server", 500, null, "Server Error", time());
         }
-        $logger->error($result);
-        throw new SeerbitException($decodeResult);
     }
 
     private function logRequest(\Psr\Log\LoggerInterface $logger, $requestUrl, $params)

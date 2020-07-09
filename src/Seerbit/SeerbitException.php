@@ -24,14 +24,14 @@ class SeerbitException extends \Exception
      *
      * @param string $message
      * @param int $code
-     * @param Exception|null $previous
+     * @param \Exception|null $previous
      * @param string|null $status
      * @param string|null $timestamp
      */
     public function __construct(
         $message = "",
         $code = 0,
-        Exception $previous = null,
+        \Exception $previous = null,
         $status = null,
         $timestamp = null
     ) {
@@ -60,6 +60,7 @@ class SeerbitException extends \Exception
     {
         return $this->code;
     }
+
 
 
 

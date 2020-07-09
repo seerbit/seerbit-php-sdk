@@ -12,24 +12,83 @@ class CardService extends TransactionService implements ITransformable
 
     private $token;
     private $result;
+    private $_client;
 
-    public function __construct(Client $client, $token)
+    public function __construct(Client $client)
     {
         parent::__construct($client);
-        $this->token = $token;
+        $this->_client = $client;
 
     }
 
     public function Authorize($payload){
         $this->setRequiresToken(true);
-        $payload['public_key'] = $this->getClient()->getPublicKey();
-        $this->result = $this->postRequest("sbt/api/card/v1/init/transaction",$payload, $this->token);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/authorise",$payload);
+        return $this;
+    }
+
+    public function Capture($payload){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/capture",$payload);
+        return $this;
+    }
+
+    public function Cancel($payload){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/cancel",$payload);
+        return $this;
+    }
+
+    public function Refund($payload){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/refund",$payload);
+        return $this;
+    }
+
+    public function CaptureNoAuth($payload){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/sale",$payload);
+        return $this;
+    }
+
+    public function ChargeNon3D($payload){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/charge",$payload);
+        return $this;
+    }
+
+    public function Charge3D($payload){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/initiates",$payload);
+        return $this;
+    }
+
+    public function Charge3DS($payload){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/initiates",$payload);
+        return $this;
+    }
+
+    public function ChargeAccount($payload){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $payload['channelType'] = "BANK_ACCOUNT";
+        $this->result = $this->postRequest("payments/initiates",$payload);
         return $this;
     }
 
     public function ValidateOtp($payload){
         $this->setRequiresToken(true);
-        $this->result = $this->postRequest("sbt/api/card/v1/validate/otp",$payload, $this->token);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/otp",$payload, $this->token);
         return $this;
     }
 
