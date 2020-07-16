@@ -2,7 +2,7 @@
 ini_set("display_errors", 1);
 
 use Seerbit\Client;
-use Seerbit\Service\Mobile\MobileService;
+use Seerbit\Service\Recurrent\RecurrentService;
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
@@ -19,34 +19,37 @@ try {
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));
     //Instantiate Mobile Money Service
-    $service = New MobileService($client);
+    $service = New RecurrentService($client);
 
     //Build PayLoad
-    $data = '
-{   
-    "fullName":"john doe",
-	  "email":"johndoe@gmail.com",
-	  "mobileNumber":"08022343345",
-    "deviceType":"nokia 3310",
-    "sourceIP":"1.0.1.0",
-    "currency": "GHS",
-    "productDescription": "snacks",
-    "country": "GH",
-    "fee": "1.00",
-    "network":"MTN",
-    "voucherCode":"",
-    "amount": "10.01",
-    "productId":"grocery",
-    "paymentType":"MOMO"
-}
-           ';
+    $data = '{ 
+    "planId":"",
+    "cardNumber":"2223000000000007",
+    "expiryMonth":"05",
+    "callbackUrl":"https://callback.url.com",
+    "expiryYear":"21",
+    "cvv":"100",
+    "amount":"20",
+    "currency":"NGN",
+    "productDescription":"Test Token",
+    "productId":"Terrain",
+    "country":"NG",
+    "startDate":"2019-01-11",
+    "cardName":"Bola Olat",
+    "billingCycle":"DAILY",
+    "email":"johndoe@gmail.com",
+    "mobileNumber":"09022323537", 
+    "customerId":"199721652416534",
+    "billingPeriod":"4"
+    }';
 
     //Decode to associated array
     $payload = json_decode($data, true);
     $payload['paymentReference'] = $transaction_ref;
 
-    $transaction = $service->Momo($payload);
+    $transaction = $service->CreateSubscription($payload);
     echo($transaction->toJson());
+
 
 } catch (\Exception $exception) {
     echo $exception->getMessage();

@@ -2,7 +2,7 @@
 ini_set("display_errors", 1);
 
 use Seerbit\Client;
-use Seerbit\Service\Mobile\MobileService;
+use Seerbit\Service\Order\OrderService;
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
@@ -19,34 +19,42 @@ try {
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));
     //Instantiate Mobile Money Service
-    $service = New MobileService($client);
+    $service = New OrderService($client);
 
     //Build PayLoad
-    $data = '
-{   
-    "fullName":"john doe",
-	  "email":"johndoe@gmail.com",
-	  "mobileNumber":"08022343345",
-    "deviceType":"nokia 3310",
-    "sourceIP":"1.0.1.0",
-    "currency": "GHS",
-    "productDescription": "snacks",
-    "country": "GH",
-    "fee": "1.00",
-    "network":"MTN",
-    "voucherCode":"",
-    "amount": "10.01",
-    "productId":"grocery",
-    "paymentType":"MOMO"
-}
-           ';
+    $data = '{
+        "email":"johndoe@gmail.com",
+		"fullName":"John Doe",
+		"orderType":"BULK_BULK",
+		"mobileNumber":"08000000001",
+		"callbackUrl":"https://yourdomain.com",
+		"country":"NG",
+		"currency":"NGN",
+		"amount":"1400",
+		"orders":[
+			{
+			"orderId":"22S789420214623",
+			"currency":"NGN",
+			"amount":"500.00",
+			"productId":"fruits",
+			"productDescription":"mango"
+			},
+			{
+			"orderId":"1a3sa82748272556947",
+			"currency":"NGN",
+			"amount":"900.00",
+			"productId":"fruits",
+			"productDescription":"orange"
+			}
+		]}';
 
     //Decode to associated array
     $payload = json_decode($data, true);
     $payload['paymentReference'] = $transaction_ref;
 
-    $transaction = $service->Momo($payload);
+    $transaction = $service->Order($payload);
     echo($transaction->toJson());
+
 
 } catch (\Exception $exception) {
     echo $exception->getMessage();

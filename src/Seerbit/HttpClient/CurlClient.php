@@ -75,13 +75,16 @@ class CurlClient implements IClient
         list($errno, $message) = $this->curlError($ch);
 
         curl_close($ch);
-
-        // result not 200 ... throw error
-        if ($httpStatus != 200 && $result) {
+//        echo $httpStatus;
+//        var_dump($result);
+        // result not 200 or 201 ... throw error
+        if (!in_array($httpStatus, [200,201]) && !$result) {
             $this->handleResultError($result, $logger);
-        } elseif (!$result) {
+        }
+        elseif (!$result) {
             $this->handleCurlError($requestUrl,json_decode($result, true), $errno, $message, $logger);
         }
+
 
         // result in array or json
         if ($config->getOutputType() == 'array') {
@@ -93,7 +96,11 @@ class CurlClient implements IClient
             $logger->info('Params in response from SeerBit: ' . print_r($result, 1));
         }
 
-            return $result;
+        if (is_array($result) || is_object($result)){
+            return ["httpStatus" => $httpStatus, "data" => $result, "message" => $result["data"]["message"]];
+        }elseif(is_string($result)){
+            return ["httpStatus" => $httpStatus, "data" => null, "message" => (string)$result];
+        }
 
     }
 
@@ -169,7 +176,11 @@ class CurlClient implements IClient
             $result = json_decode($result, true);
         }
 
-        return $result;
+        if (is_array($result) || is_object($result)){
+            return ["httpStatus" => $httpStatus, "data" => $result, "message" => $result["message"]];
+        }elseif(is_string($result)){
+            return ["httpStatus" => $httpStatus, "data" => null, "message" => (string)$result];
+        }
 
     }
 
@@ -257,7 +268,11 @@ class CurlClient implements IClient
             $logger->info('Params in response from Seerbit:' . print_r($result, 1));
         }
 
-        return $result;
+        if (is_array($result) || is_object($result)){
+            return ["httpStatus" => $httpStatus, "data" => $result, "message" => $result["message"]];
+        }elseif(is_string($result)){
+            return ["httpStatus" => $httpStatus, "data" => null, "message" => (string)$result];
+        }
 
     }
 
