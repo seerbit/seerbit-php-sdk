@@ -10,19 +10,25 @@ class MobileService extends TransactionService implements ITransformable
 {
 
     private $result;
-    private $_client;
+    private $token;
 
-    public function __construct(Client $client)
+    public function __construct(Client $client,$token)
     {
         parent::__construct($client);
-        $this->_client = $client;
-
+        $this->token = $token;
     }
 
-    public function Momo($payload){
+    public function Authorize($payload){
         $this->setRequiresToken(true);
         $payload['publicKey'] = $this->getClient()->getPublicKey();
         $this->result = $this->postRequest("payments/initiates",$payload);
+        return $this;
+    }
+
+    public function Networks(){
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->getRequest("networks",$this->token);
         return $this;
     }
 

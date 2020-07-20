@@ -116,15 +116,6 @@ class Client{
 //        $this->logger = $logger;
     }
 
-    public function setInputType($value)
-    {
-        $this->config->set('inputType', $value);
-    }
-
-    public function setOutputType($value)
-    {
-        $this->config->set('outputType', $value);
-    }
 
     public function setTimeout($value)
     {

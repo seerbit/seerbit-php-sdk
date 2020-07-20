@@ -51,25 +51,18 @@ class TransactionService implements IService
     }
 
     protected function postRequest($endpoint,$params, $token = null){
-        try {
             return $this->httpClient->POST(
                 $this,
                 $this->client->getConfig()->get('endpoint') . $endpoint,
                 $params,
                 $this->client->getToken());
-        } catch (SeerbitException $e) {
-        }
     }
 
     protected function getRequest($endpoint, $token = null){
-
-        try {
             return $this->httpClient->GET(
                 $this,
                 $this->client->getConfig()->get('endpoint') . $endpoint,
                 $token);
-        } catch (SeerbitException $e) {
-        }
     }
 
 

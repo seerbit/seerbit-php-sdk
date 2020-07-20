@@ -57,9 +57,7 @@ class CurlClient implements IClient
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
 
-        $logger->info("Request headers to Seerbit" . print_r($headers, 1));
-
-
+        $logger->info("Request headers to SeerBit" . print_r($headers, 1));
 
         // return the result
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -76,7 +74,7 @@ class CurlClient implements IClient
 
         curl_close($ch);
 //        echo $httpStatus;
-//        var_dump($result);
+//        echo ($jsonRequest); die();
         // result not 200 or 201 ... throw error
         if (!in_array($httpStatus, [200,201]) && !$result) {
             $this->handleResultError($result, $logger);
@@ -85,21 +83,21 @@ class CurlClient implements IClient
             $this->handleCurlError($requestUrl,json_decode($result, true), $errno, $message, $logger);
         }
 
+        // log the array result
+        $logger->info('Params in response from SeerBit: ' . print_r(json_decode($result, true), 1));
 
-        // result in array or json
-        if ($config->getOutputType() == 'array') {
-
-            // transform to PHP Array
-            $result = json_decode($result, true);
-
-            // log the array result
-            $logger->info('Params in response from SeerBit: ' . print_r($result, 1));
-        }
+        $result = json_decode($result, true);
 
         if (is_array($result) || is_object($result)){
-            return ["httpStatus" => $httpStatus, "data" => $result, "message" => $result["data"]["message"]];
+            return [
+                "httpStatus" => $httpStatus,
+                "data" => isset($result["data"]) ? $result["data"] : null,
+                "message" => isset($result["message"]) ? $result["message"] : isset($result["data"]["message"]) ? $result["data"]["message"] : "Success"
+            ];
         }elseif(is_string($result)){
             return ["httpStatus" => $httpStatus, "data" => null, "message" => (string)$result];
+        }else{
+            return ["httpStatus" => $httpStatus, "data" => null, "message" => "Unable to process response now try again."];
         }
 
     }
@@ -130,19 +128,22 @@ class CurlClient implements IClient
 
         // set authorisation credentials according to support & availability
         if ($service->requiresToken()) {
+
             if(!$token){
+
                 $msg = "Please provide an Authentication token";
                 throw new SeerbitException($msg);
+
             }else{
                 array_push($headers,'Authorization: Bearer '.$token);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             }
 
         } else {
-
             //Set the headers
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
+
 
         $logger->info("Request headers to Seerbit" . print_r($headers, 1));
 
@@ -161,7 +162,7 @@ class CurlClient implements IClient
 
         curl_close($ch);
 
-        if (in_array($httpStatus, [200,201]) && $result) {
+        if (!in_array($httpStatus, [200,201]) && $result) {
             $this->handleResultError($result, $logger);
         } elseif (!$result) {
             $this->handleCurlError($requestUrl,json_decode($result, true), $errno, $message, $logger);
@@ -170,14 +171,13 @@ class CurlClient implements IClient
         // log the array result
         $logger->info('Params in response from Seerbit:' . print_r($result, 1));
 
-        // result in array or json
-        if ($config->getOutputType() == 'array') {
-            // transform to PHP Array
-            $result = json_decode($result, true);
-        }
+        $result = json_decode($result, true);
 
         if (is_array($result) || is_object($result)){
-            return ["httpStatus" => $httpStatus, "data" => $result, "message" => $result["message"]];
+            return [
+                "httpStatus" => $httpStatus,
+                "data" => isset($result["data"]) ? $result["data"] : null,
+                "message" => isset($result["message"]) ? $result["message"] : isset($result["data"]["message"]) ? $result["data"]["message"] : "Success" ];
         }elseif(is_string($result)){
             return ["httpStatus" => $httpStatus, "data" => null, "message" => (string)$result];
         }

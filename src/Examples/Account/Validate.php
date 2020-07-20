@@ -2,7 +2,8 @@
 ini_set("display_errors", 1);
 
 use Seerbit\Client;
-use Seerbit\Service\Card\CardService;
+use Seerbit\SeerbitException;
+use Seerbit\Service\Account\AccountService;
 require __DIR__ . '/../../../vendor/autoload.php';
 
 try{
@@ -14,45 +15,24 @@ try{
     $client->setEnvironment(\Seerbit\Environment::LIVE);
     $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
 
-
-    //Instantiate Card Service
-    $card_service =  New CardService($client);
+    //Instantiate Account Service
+    $service =  New AccountService($client,$token);
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));
 
     $json = '{
-	"amount":"1000.00",
-	"fee":"10",
-	"fullName":"Victor Ighalo",
-	"mobileNumber":"08032000033",
-	"currency":"NGN",
-	"country":"NG",
-	"paymentReference":"LKJHGFDR123UI23992JN23R",
-	"email":"johndoe@gmail.com",
-	"productId":"Foods",
-	"productDescription":"Test Description",
-	"clientAppCode":"kpp64",
-	"redirectUrl":"",
-	"deviceType":"Apple Laptop",
-    "sourceIP":"127.0.0.1:3456",
-	"cardNumber":"5123450000000008",
-	"cvv":"100",
-	"expiryMonth":"05",
-	"expiryYear":"21",
-	"pin":"####",
-	"retry":"false",
-	"invoiceNumber":"1234567890abc123ac"
+	"linkingReference":"F123500031595153273381",
+	"otp":"00234242"
         }';
 
     $payload = json_decode($json, true);
     $payload['paymentReference'] = $transaction_ref;
 
-    $transaction = $card_service->ChargeAccount($payload);
+    $transaction = $service->Validate($payload);
 
+    header('Content-Type: application/json');
     echo($transaction->toJson());
 
-
-
-}catch (\Exception $exception){
+}catch (SeerbitException $exception){
     echo $exception->getMessage();
 }

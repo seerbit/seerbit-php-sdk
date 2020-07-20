@@ -19,33 +19,28 @@ try {
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));
     //Instantiate Mobile Money Service
-    $service = New MobileService($client);
+    $service = New MobileService($client,$token);
 
     //Build PayLoad
-    $data = '
-{   
+    $data =
+    '{   
     "fullName":"john doe",
-	  "email":"johndoe@gmail.com",
-	  "mobileNumber":"08022343345",
-    "deviceType":"nokia 3310",
-    "sourceIP":"1.0.1.0",
+	"email":"johndoe@gmail.com",
+	"mobileNumber":"08022343345",
     "currency": "GHS",
-    "productDescription": "snacks",
     "country": "GH",
-    "fee": "1.00",
     "network":"MTN",
-    "voucherCode":"",
     "amount": "10.01",
-    "productId":"grocery",
     "paymentType":"MOMO"
-}
-           ';
+    }';
 
     //Decode to associated array
     $payload = json_decode($data, true);
     $payload['paymentReference'] = $transaction_ref;
 
-    $transaction = $service->Momo($payload);
+    $transaction = $service->Authorize($payload);
+
+    header('Content-Type: application/json');
     echo($transaction->toJson());
 
 } catch (\Exception $exception) {

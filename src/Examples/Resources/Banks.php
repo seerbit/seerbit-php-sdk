@@ -18,6 +18,7 @@ try{
 
     $transaction = $card_service->GetBankList();
 
+    header('Content-Type: application/json');
     echo($transaction->toJson());
 
 }catch (\Exception $exception){
