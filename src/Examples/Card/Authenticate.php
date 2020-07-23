@@ -28,7 +28,6 @@ try{
         "expiryYear":"21",
         "currency":"KES",
         "country":"KE",
-        "productDescription":"preauth test capture",
         "amount":"100.00",
         "email":"johndoe@gmail.com",
         "fullName":"john doe"

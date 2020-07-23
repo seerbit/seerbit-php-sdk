@@ -15,7 +15,7 @@ try{
     $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
 
     //Instantiate Account Service
-    $service =  New AccountService($client,$token);
+    $service =  New AccountService($client);
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));
 

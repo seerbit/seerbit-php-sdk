@@ -6,6 +6,7 @@ namespace Seerbit\Service\Card;
 use Seerbit\Client;
 use Seerbit\Service\ITransformable;
 use Seerbit\Service\TransactionService;
+use Seerbit\Service\Validators\CardValidator;
 
 class CardService extends TransactionService implements ITransformable
 {
@@ -22,6 +23,7 @@ class CardService extends TransactionService implements ITransformable
     }
 
     public function Authorize($payload){
+        CardValidator::Authorize($payload);
         $this->setRequiresToken(true);
         $payload['publicKey'] = $this->getClient()->getPublicKey();
         $this->result = $this->postRequest("payments/authorise",$payload);

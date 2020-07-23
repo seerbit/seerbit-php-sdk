@@ -10,13 +10,11 @@ use Seerbit\Service\Validators\AccountValidator;
 
 class AccountService extends TransactionService implements ITransformable
 {
-    private $token;
     private $result;
 
-    public function __construct(Client $client, $token)
+    public function __construct(Client $client)
     {
         parent::__construct($client);
-        $this->token = $token;
     }
 
     public function Authorize($payload){
@@ -25,14 +23,14 @@ class AccountService extends TransactionService implements ITransformable
         $payload['publicKey'] = $this->getClient()->getPublicKey();
         $payload['paymentType'] = "ACCOUNT";
 
-        $this->result = $this->postRequest("payments/initiates",$payload, $this->token);
+        $this->result = $this->postRequest("payments/initiates",$payload);
         return $this;
     }
 
     public function Validate($payload){
         $this->requiresToken = true;
         AccountValidator::Validate($payload);
-        $this->result = $this->postRequest("payments/validate",$payload, $this->token);
+        $this->result = $this->postRequest("payments/validate",$payload);
         return $this;
     }
 
