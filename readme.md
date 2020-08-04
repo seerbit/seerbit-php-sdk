@@ -9,16 +9,19 @@
 </h1>
 
 
-# SeerBit's API Library for PHP (Version 1)
+# SeerBit's API SDK for PHP (Version 2)
 
-SeerBit PHP Library for easy integration with SeerBit's API.
+SeerBit PHP SDK for easy integration with SeerBit's API.
 
 ## Integration
 The Library supports all APIs under the following services:
 
+* Standard API Checkout
 * Payment via API (card and account)
-* Disputes
-* Refunds
+* Recurrent
+* Pre-auth payment
+* Order
+* Mobile Money
 * Transaction Status
 
 ## Requirements
@@ -29,7 +32,7 @@ You can use Composer or simply Download the Release
 
 ### Composer ###
 
-The preferred method is via [composer](https://getcomposer.org). Follow the
+The preferred method is via [composer](https://getcomposer.org). Follow the composer
 [installation instructions](https://getcomposer.org/doc/00-intro.md) if you do not already have
 composer installed.
 
@@ -37,7 +40,7 @@ composer installed.
 Once composer is installed, execute the following command in your project root to install this library:
 
 ```sh
-composer require seerbit/seerbit-php-v1
+composer require seerbit/seerbit-php-sdk
 ```
 
 ### Examples ###
@@ -46,46 +49,50 @@ Validate a transaction:
 
 ```php
 
-use Seerbit\Client;
-use Seerbit\Service\Authenticate;
-use Seerbit\Service\Status\TransactionStatusService;
+try{
+    $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
+    //Instantiate SeerBit Client
+    $client = new Client();
+    $client->setToken($token);
+    //Configure SeerBit Client
+    $client->setEnvironment(\Seerbit\Environment::LIVE);
+    $client->setAuthType(\Seerbit\AuthType::BEARER);
 
-//Instantiate SeerBit Client
-$client = new Client();
+    //SETUP CREDENTIALS
+    $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
+    $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
 
-//Configure SeerBit Client Environment
-$client->setEnvironment(\Seerbit\Environment::LIVE);
+    //Instantiate Resource Service
+    $standard_service =  New StandardService($client);
+    $uuid = bin2hex(random_bytes(6));
+    $transaction_ref = strtoupper(trim($uuid));
 
-$client->setPublicKey("ACCOUNT PUBLIC KEY");
-$client->setPrivateKey("ACCOUNT PRIVATE KEY");
+    //the order of placement is important
+    $payload = [
+        "amount" => "1000",
+        "callbackUrl" => "http:yourwebsite.com",
+        "country" => "NG",
+        "currency" => "NGN",
+        "email" => "customer@email.com",
+        "paymentReference" => $transaction_ref,
+        "productDescription" => "product_description",
+        "productId" => "64310880-2708933-427"
+    ];
 
-//Instantiate Authentication Service
-$authService = new Authenticate($client);
+    $transaction = $standard_service->Initialize($payload);
 
-    //Get Auth Token
-    $card_auth_token = $authService->Auth()->getToken();
+    echo($transaction->toJson());
 
-    if ($card_auth_token){
-
-        //Instantiate Transaction Service
-        $transaction_service =  New TransactionStatusService($client, $card_auth_token);
-
-        $transaction_reference = "TRANSACTION REFERENCE";
-
-        //Validate Transaction
-        $transaction_status = $transaction_service->ValidateStatus($transaction_reference);
-        echo($transaction_status->toJson());
-
-    }else{
-        echo 'Authentication failed';
-    }
+}catch (\Exception $exception){
+    echo $exception->getMessage();
+}
 
 
 ```
 Find more examples [**here**](./src/Examples) 
 
 ## Documentation ##
-* https://doc.seerbit.com/v/master/api/library
+* https://doc.seerbit.com/
 
 ## Support
 If you have any problems, questions or suggestions, create an issue here or send your inquiry to care@seerbit.com.
