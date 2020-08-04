@@ -10,12 +10,10 @@ class MobileService extends TransactionService implements ITransformable
 {
 
     private $result;
-    private $token;
 
-    public function __construct(Client $client,$token)
+    public function __construct(Client $client)
     {
         parent::__construct($client);
-        $this->token = $token;
     }
 
     public function Authorize($payload){
@@ -28,7 +26,7 @@ class MobileService extends TransactionService implements ITransformable
     public function Networks(){
         $this->setRequiresToken(true);
         $payload['publicKey'] = $this->getClient()->getPublicKey();
-        $this->result = $this->getRequest("networks",$this->token);
+        $this->result = $this->getRequest("networks");
         return $this;
     }
 

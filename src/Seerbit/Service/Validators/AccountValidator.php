@@ -29,6 +29,9 @@ class AccountValidator
         if (!array_key_exists("email",$payload)) {
             throw new \InvalidArgumentException('email should not be empty');
         }
+        if (!array_key_exists("paymentReference",$payload)) {
+            throw new \InvalidArgumentException('paymentReference should not be empty');
+        }
     }
 
     public static function Validate(array $payload){

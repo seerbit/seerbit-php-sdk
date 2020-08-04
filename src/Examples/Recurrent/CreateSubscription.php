@@ -13,6 +13,7 @@ try {
     $client->setToken($token);
     //Configure SeerBit Client
     $client->setEnvironment(\Seerbit\Environment::LIVE);
+    $client->setAuthType(\Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
     $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
@@ -23,7 +24,6 @@ try {
 
     //Build PayLoad
     $data = '{ 
-    "planId":"",
     "cardNumber":"2223000000000007",
     "expiryMonth":"05",
     "callbackUrl":"https://callback.url.com",
@@ -31,14 +31,13 @@ try {
     "cvv":"100",
     "amount":"20",
     "currency":"NGN",
-    "productDescription":"Test Token",
-    "productId":"Terrain",
+    "productDescription":"Medium HM",
+    "productId":"mhmo",
     "country":"NG",
     "startDate":"2019-01-11",
     "cardName":"Bola Olat",
     "billingCycle":"DAILY",
     "email":"johndoe@gmail.com",
-    "mobileNumber":"09022323537", 
     "customerId":"199721652416534",
     "billingPeriod":"4"
     }';
@@ -48,6 +47,7 @@ try {
     $payload['paymentReference'] = $transaction_ref;
 
     $transaction = $service->CreateSubscription($payload);
+    header('Content-Type: application/json');
     echo($transaction->toJson());
 
 

@@ -13,13 +13,14 @@ try {
     $client->setToken($token);
     //Configure SeerBit Client
     $client->setEnvironment(\Seerbit\Environment::LIVE);
+    $client->setAuthType(\Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
     $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));
     //Instantiate Mobile Money Service
-    $service = New MobileService($client,$token);
+    $service = New MobileService($client);
 
     //Build PayLoad
     $data =

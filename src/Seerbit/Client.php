@@ -9,7 +9,7 @@ class Client{
 
     const VERSION = '0.0.1';
     const ENDPOINT_PILOT = "https://pilot-backend.seerbitapi.com/";
-    const ENDPOINT_LIVE = "https://stg-backend.seerbitapi.com/api/v2/";
+    const ENDPOINT_LIVE = "https://seerbitapi.com/api/v2/";
 
     private $config;
 
@@ -38,9 +38,14 @@ class Client{
         $this->config->set('token', $token);
     }
 
-    public function setPrivateKey($publicKey)
+    public function setAuthType($type)
     {
-        $this->config->set('privateKey', $publicKey);
+        $this->config->set('authType', $type);
+    }
+
+    public function setSecretKey($secretKey)
+    {
+        $this->config->set('secretKey', $secretKey);
     }
 
     public function setUsername($username)
@@ -73,9 +78,14 @@ class Client{
         return $this->config->get('token');
     }
 
-    public function getPrivateKey()
+    public function getAuthType()
     {
-        return $this->config->get('privateKey');
+        return $this->config->get('authType');
+    }
+
+    public function getSecretKey()
+    {
+        return $this->config->get('secretKey');
     }
 
     public function setConfig($config)

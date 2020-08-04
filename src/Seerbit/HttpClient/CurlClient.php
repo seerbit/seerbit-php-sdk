@@ -10,7 +10,7 @@ class CurlClient implements IClient
 {
 
 
-    public function POST(IService $service, $requestUrl, $params = null, $token = null)
+    public function POST(IService $service, $requestUrl, $params = null, $token = null,$authType)
     {
 
         $client = $service->getClient();
@@ -47,13 +47,26 @@ class CurlClient implements IClient
                 $msg = "Please provide an Authentication token";
                 throw new SeerbitException($msg);
             }else{
-                array_push($headers,'Authorization: Bearer '.$token);
+                if($authType === \Seerbit\AuthType::BASIC){
+                    $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
+                    array_push($headers,'Authorization: Basic '.$key);
+                }else{
+                    array_push($headers,'Authorization: Bearer '.$token);
+                }
+
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             }
 
         } else {
 
             //Set the headers
+            if($authType === \Seerbit\AuthType::BASIC){
+                $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
+                array_push($headers,'Authorization: Basic '.$key);
+            }else{
+                array_push($headers,'Authorization: Bearer '.$token);
+            }
+
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
 
@@ -73,8 +86,6 @@ class CurlClient implements IClient
         list($errno, $message) = $this->curlError($ch);
 
         curl_close($ch);
-//        echo $httpStatus;
-//        echo ($jsonRequest); die();
         // result not 200 or 201 ... throw error
         if (!in_array($httpStatus, [200,201]) && !$result) {
             $this->handleResultError($result, $logger);
@@ -89,10 +100,22 @@ class CurlClient implements IClient
         $result = json_decode($result, true);
 
         if (is_array($result) || is_object($result)){
+            $msg = "";
+            $data = isset($result["data"]) ? $result["data"] : null;
+            if (is_null($data)){
+                $data = isset($result["networks"]) ? $result["networks"] : null;
+            }
+            if(isset($result["message"]) ){
+                $msg =  $result["message"];
+            }elseif ($data){
+                if (isset($result["data"]["message"])){
+                    $msg =  $result["data"]["message"];
+                }
+            }
             return [
                 "httpStatus" => $httpStatus,
-                "data" => isset($result["data"]) ? $result["data"] : null,
-                "message" => isset($result["message"]) ? $result["message"] : isset($result["data"]["message"]) ? $result["data"]["message"] : "Success"
+                "data" => $data,
+                "message" => $msg
             ];
         }elseif(is_string($result)){
             return ["httpStatus" => $httpStatus, "data" => null, "message" => (string)$result];
@@ -102,7 +125,7 @@ class CurlClient implements IClient
 
     }
 
-    public function GET(IService $service, $requestUrl, $token = null)
+    public function GET(IService $service, $requestUrl, $token = null,$authType)
     {
 
         $client = $service->getClient();
@@ -128,19 +151,30 @@ class CurlClient implements IClient
 
         // set authorisation credentials according to support & availability
         if ($service->requiresToken()) {
-
-            if(!$token){
-
+            if(strlen($token) < 1){
                 $msg = "Please provide an Authentication token";
                 throw new SeerbitException($msg);
-
             }else{
-                array_push($headers,'Authorization: Bearer '.$token);
+                if($authType === \Seerbit\AuthType::BASIC){
+                    $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
+                    array_push($headers,'Authorization: Basic '.$key);
+                }else{
+                    array_push($headers,'Authorization: Bearer '.$token);
+                }
+
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             }
 
         } else {
+
             //Set the headers
+            if($authType === \Seerbit\AuthType::BASIC){
+                $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
+                array_push($headers,'Authorization: Basic '.$key);
+            }else{
+                array_push($headers,'Authorization: Bearer '.$token);
+            }
+
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
 
@@ -174,17 +208,32 @@ class CurlClient implements IClient
         $result = json_decode($result, true);
 
         if (is_array($result) || is_object($result)){
+            $msg = "";
+            $data = isset($result["data"]) ? $result["data"] : null;
+            if (is_null($data)){
+                $data = isset($result["networks"]) ? $result["networks"] : null;
+            }
+            if(isset($result["message"]) ){
+                $msg =  $result["message"];
+            }elseif ($data){
+                if (isset($result["data"]["message"])){
+                    $msg =  $result["data"]["message"];
+                }
+            }
             return [
                 "httpStatus" => $httpStatus,
-                "data" => isset($result["data"]) ? $result["data"] : null,
-                "message" => isset($result["message"]) ? $result["message"] : isset($result["data"]["message"]) ? $result["data"]["message"] : "Success" ];
+                "data" => $data,
+                "message" => $msg
+            ];
         }elseif(is_string($result)){
             return ["httpStatus" => $httpStatus, "data" => null, "message" => (string)$result];
+        }else{
+            return ["httpStatus" => $httpStatus, "data" => null, "message" => "Unable to process response now try again."];
         }
 
     }
 
-    public function PUT(IService $service, $requestUrl, $params = null, $token = null)
+    public function PUT(IService $service, $requestUrl, $params = null, $token = null,$authType)
     {
 
         $client = $service->getClient();
@@ -218,17 +267,30 @@ class CurlClient implements IClient
 
         // set authorisation credentials according to support & availability
         if ($service->requiresToken()) {
-            if(count($token) < 1){
+            if(strlen($token) < 1){
                 $msg = "Please provide an Authentication token";
                 throw new SeerbitException($msg);
             }else{
-                array_push($headers,'Authorization: Bearer '.$token);
+                if($authType === \Seerbit\AuthType::BASIC){
+                    $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
+                    array_push($headers,'Authorization: Basic '.$key);
+                }else{
+                    array_push($headers,'Authorization: Bearer '.$token);
+                }
+
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             }
 
         } else {
 
             //Set the headers
+            if($authType === \Seerbit\AuthType::BASIC){
+                $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
+                array_push($headers,'Authorization: Basic '.$key);
+            }else{
+                array_push($headers,'Authorization: Bearer '.$token);
+            }
+
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
 
@@ -252,26 +314,34 @@ class CurlClient implements IClient
         curl_close($ch);
 
         // result not 200 ... throw error
-        if ($httpStatus != 200 && $result) {
+        if (!in_array($httpStatus, [200,201]) && $result) {
             $this->handleResultError($result, $logger);
         } elseif (!$result) {
             $this->handleCurlError($requestUrl,json_decode($result, true), $errno, $message, $logger);
         }
 
-        // result in array or json
-        if ($config->getOutputType() == 'array') {
-
-            // transform to PHP Array
-            $result = json_decode($result, true);
-
-            // log the array result
-            $logger->info('Params in response from Seerbit:' . print_r($result, 1));
-        }
-
         if (is_array($result) || is_object($result)){
-            return ["httpStatus" => $httpStatus, "data" => $result, "message" => $result["message"]];
+            $msg = "";
+            $data = isset($result["data"]) ? $result["data"] : null;
+            if (is_null($data)){
+                $data = isset($result["networks"]) ? $result["networks"] : null;
+            }
+            if(isset($result["message"]) ){
+                $msg =  $result["message"];
+            }elseif ($data){
+                if (isset($result["data"]["message"])){
+                    $msg =  $result["data"]["message"];
+                }
+            }
+            return [
+                "httpStatus" => $httpStatus,
+                "data" => $data,
+                "message" => $msg
+            ];
         }elseif(is_string($result)){
             return ["httpStatus" => $httpStatus, "data" => null, "message" => (string)$result];
+        }else{
+            return ["httpStatus" => $httpStatus, "data" => null, "message" => "Unable to process response now try again."];
         }
 
     }
@@ -330,15 +400,8 @@ class CurlClient implements IClient
     private function logRequest(\Psr\Log\LoggerInterface $logger, $requestUrl, $params)
     {
         // log the requestUr, params and json request
-        $logger->info("Request url to Seerbit: " . $requestUrl);
-        if (isset($params["additionalData"]) && isset($params["additionalData"]["card.encrypted.json"])) {
-            $params["additionalData"]["card.encrypted.json"] = "*";
-        }
-        if (isset($params["card"]) && isset($params["card"]["number"])) {
-            $params["card"]["number"] = "*";
-            $params["card"]["cvc"] = "*";
-        }
-        $logger->info('JSON Request payload to Seerbit:' . json_encode($params));
+        $logger->info("Request url to SeerBit: " . $requestUrl);
+        $logger->info('JSON Request payload to SeerBit:' . json_encode($params));
     }
 
     protected function curlRequest($ch)

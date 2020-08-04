@@ -10,20 +10,22 @@ use Seerbit\Service\TransactionService;
 class TransactionStatusService extends TransactionService implements ITransformable
 {
 
-    private $token;
     private $result;
 
-    public function __construct(Client $client, $token)
+    public function __construct(Client $client)
     {
         parent::__construct($client);
-        $this->token = $token;
-
     }
 
-
-    public function ValidateStatus($transaction_reference){
+    public function ValidateTransactionStatus($transaction_reference){
         $this->setRequiresToken(true);
-        $this->result = $this->getRequest("sbt/api/card/v1/get/transaction/status/".$transaction_reference, $this->token);
+        $this->result = $this->getRequest("payments/query/".$transaction_reference);
+        return $this;
+    }
+
+    public function ValidateSubscriptionStatus($billingId){
+        $this->setRequiresToken(true);
+        $this->result = $this->getRequest("recurring/billingId/".$billingId);
         return $this;
     }
 

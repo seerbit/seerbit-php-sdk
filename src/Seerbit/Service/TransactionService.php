@@ -2,11 +2,7 @@
 
 namespace Seerbit\Service;
 
-
 use \Seerbit\HttpClient\CurlClient;
-use Seerbit\SeerbitException;
-use Seerbit\Service\IAuthenticate;
-use Seerbit\Service\IService;
 
 class TransactionService implements IService
 {
@@ -35,12 +31,12 @@ class TransactionService implements IService
             $msg = "The client does not have a merchant public key. Set a public key using the Client.";
             throw new \Seerbit\SeerbitException($msg);
         }
-//
-//        if (!$client->getConfig()->get('privateKey')) {
-//            // throw exception
-//            $msg = "The client does not have a merchant private key. Set a private key using the Client.";
-//            throw new \Seerbit\SeerbitException($msg);
-//        }
+
+        if (!$client->getConfig()->get('secretKey')) {
+            // throw exception
+            $msg = "The client does not have a merchant secret key. Set a secret key using the Client.";
+            throw new \Seerbit\SeerbitException($msg);
+        }
 
         $this->client = $client;
     }
@@ -50,19 +46,33 @@ class TransactionService implements IService
         return $this->client;
     }
 
-    protected function postRequest($endpoint,$params, $token = null){
+    protected function postRequest($endpoint,$params){
             return $this->httpClient->POST(
                 $this,
                 $this->client->getConfig()->get('endpoint') . $endpoint,
                 $params,
-                $this->client->getToken());
+                $this->client->getToken(),
+                $this->client->getAuthType()
+            );
     }
 
-    protected function getRequest($endpoint, $token = null){
+    protected function getRequest($endpoint){
             return $this->httpClient->GET(
                 $this,
                 $this->client->getConfig()->get('endpoint') . $endpoint,
-                $token);
+                $this->client->getToken(),
+                $this->client->getAuthType()
+                );
+    }
+
+    protected function putRequest($endpoint,$params){
+        return $this->httpClient->POST(
+            $this,
+            $this->client->getConfig()->get('endpoint') . $endpoint,
+            $params,
+            $this->client->getToken(),
+            $this->client->getAuthType()
+        );
     }
 
 

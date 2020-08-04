@@ -2,8 +2,7 @@
 ini_set("display_errors", 1);
 
 use Seerbit\Client;
-use Seerbit\SeerbitException;
-use Seerbit\Service\Mobile\MobileService;
+use Seerbit\Service\Recurrent\RecurrentService;
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
@@ -18,15 +17,28 @@ try {
 
     //SETUP CREDENTIALS
     $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
-
     //Instantiate Mobile Money Service
-    $service = New MobileService($client,$token);
+    $service = New RecurrentService($client);
 
-    $result = $service->Networks();
+    //Build PayLoad
+    $data = '{ 
+    "amount":"20",
+    "currency":"NGN",
+    "country":"NG",
+    "status":"INACTIVE",
+    "email":"johndoe@gmail.com",
+    "billingId":"199721652416534",
+    "mobileNumber":"09339993322"
+    }';
 
+    //Decode to associated array
+    $payload = json_decode($data, true);
+
+    $transaction = $service->UpdateSubscription($payload);
     header('Content-Type: application/json');
-    echo($result->toJson());
+    echo($transaction->toJson());
 
-} catch (SeerbitException $exception) {
+
+} catch (\Exception $exception) {
     echo $exception->getMessage();
 }

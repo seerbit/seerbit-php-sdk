@@ -11,6 +11,7 @@ try{
     $client = new Client();
     //Configure SeerBit Client
     $client->setEnvironment(\Seerbit\Environment::LIVE);
+    $client->setAuthType(\Seerbit\AuthType::BEARER);
     $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
 
     //Instantiate Resource Service

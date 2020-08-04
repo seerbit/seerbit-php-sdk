@@ -2,31 +2,32 @@
 ini_set("display_errors", 1);
 
 use Seerbit\Client;
-use Seerbit\SeerbitException;
-use Seerbit\Service\Mobile\MobileService;
+use Seerbit\Service\Status\TransactionStatusService;
 
 require __DIR__ . '/../../../vendor/autoload.php';
 
-try {
+try{
     $token = "pCEdKBei+5OLwaCamMlyct9dtHGFUyT35MVQZ5rYaQ5e6Eoj1amt/25WK8ZCWqN4ZPQlgar953PgHorH1RUoAJB6ZK5k5d+yAjmN0EcYpDSDQeEMMZuvUHZVXcXHwRyW";
     //Instantiate SeerBit Client
     $client = new Client();
     $client->setToken($token);
+
     //Configure SeerBit Client
+    $client->setToken($token);
     $client->setEnvironment(\Seerbit\Environment::LIVE);
     $client->setAuthType(\Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
-    $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
+    $client->setPublicKey("SBTESTPUBK_9e6b6DNiSP2gxOKXfyXhijzEMRHphtOd");
+    $client->setSecretKey("SBTESTSECK_ZfqoNFaGmQRxaPOn2VSfkWfBTj7u0fUjgkStmYFC");
 
     //Instantiate Mobile Money Service
-    $service = New MobileService($client,$token);
+    $service = New TransactionStatusService($client);
 
-    $result = $service->Networks();
+    $transaction = $service->ValidateTransactionStatus("BDC3307BB821");
 
-    header('Content-Type: application/json');
-    echo($result->toJson());
+    echo($transaction->toJson());
 
-} catch (SeerbitException $exception) {
+}catch (\Exception $exception){
     echo $exception->getMessage();
 }

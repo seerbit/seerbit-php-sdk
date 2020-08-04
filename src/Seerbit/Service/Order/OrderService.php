@@ -6,11 +6,10 @@ namespace Seerbit\Service\Order;
 use Seerbit\Client;
 use Seerbit\Service\ITransformable;
 use Seerbit\Service\TransactionService;
-
+use Seerbit\Service\Validators\OrderValidator;
 class OrderService extends TransactionService implements ITransformable
 {
 
-    private $token;
     private $result;
     private $_client;
 
@@ -18,10 +17,10 @@ class OrderService extends TransactionService implements ITransformable
     {
         parent::__construct($client);
         $this->_client = $client;
-
     }
 
-    public function Order($payload){
+    public function Create($payload){
+        OrderValidator::Create($payload);
         $this->setRequiresToken(true);
         $payload['publicKey'] = $this->getClient()->getPublicKey();
         $this->result = $this->postRequest("payments/order",$payload);

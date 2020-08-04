@@ -13,6 +13,7 @@ try {
     $client->setToken($token);
     //Configure SeerBit Client
     $client->setEnvironment(\Seerbit\Environment::LIVE);
+    $client->setAuthType(\Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
     $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
@@ -26,7 +27,6 @@ try {
         "email":"johndoe@gmail.com",
 		"fullName":"John Doe",
 		"orderType":"BULK_BULK",
-		"mobileNumber":"08000000001",
 		"callbackUrl":"https://yourdomain.com",
 		"country":"NG",
 		"currency":"NGN",
@@ -52,7 +52,8 @@ try {
     $payload = json_decode($data, true);
     $payload['paymentReference'] = $transaction_ref;
 
-    $transaction = $service->Order($payload);
+    $transaction = $service->Create($payload);
+    header('Content-Type: application/json');
     echo($transaction->toJson());
 
 

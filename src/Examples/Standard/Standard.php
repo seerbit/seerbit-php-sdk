@@ -2,7 +2,7 @@
 ini_set("display_errors", 1);
 
 use Seerbit\Client;
-use Seerbit\Service\Account\AccountService;
+use Seerbit\Service\Standard\StandardService;
 require __DIR__ . '/../../../vendor/autoload.php';
 
 try{
@@ -10,7 +10,7 @@ try{
     //Instantiate SeerBit Client
     $client = new Client();
     $client->setToken($token);
-
+    //Configure SeerBit Client
     $client->setEnvironment(\Seerbit\Environment::LIVE);
     $client->setAuthType(\Seerbit\AuthType::BEARER);
 
@@ -18,24 +18,24 @@ try{
     $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
     $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
 
-
-    $card_service =  New AccountService($client);
+    //Instantiate Resource Service
+    $standard_service =  New StandardService($client);
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));
 
-    $json = '{
-        "amount":"1000.00",
-        "accountName":"Customer Bank Account Name",
-        "accountNumber":"1234567890",
-        "bankCode":"033",
-        "currency":"NGN",
-        "country":"NG",
-        "email":"customer@email.com"
-        }';
+    //the order of placement is important
+    $payload = [
+        "amount" => "1000",
+        "callbackUrl" => "http:yourwebsite.com",
+        "country" => "NG",
+        "currency" => "NGN",
+        "email" => "customer@email.com",
+        "paymentReference" => $transaction_ref,
+        "productDescription" => "product_description",
+        "productId" => "64310880-2708933-427"
+    ];
 
-    $payload = json_decode($json, true);
-    $payload['paymentReference'] = $transaction_ref;
-    $transaction = $card_service->Authorize($payload);
+    $transaction = $standard_service->Initialize($payload);
 
     echo($transaction->toJson());
 
