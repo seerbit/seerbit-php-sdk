@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/seerbit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/seerbit.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.phar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer_2.phar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/TransactionStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/TransactionStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/SeerbitExpection.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/SeerbitException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,14 +83,14 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Seerbit/Service/Refund" />
       <recent name="$PROJECT_DIR$/src/Seerbit/Service" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/Seerbit" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
