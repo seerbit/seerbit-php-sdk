@@ -31,7 +31,7 @@ class StandardService extends TransactionService implements ITransformable
         }
         $string_to_hash = rtrim($hash_string_build, "&").$this->getClient()->getSecretKey();
         $hash = hash('sha256', $string_to_hash);
-        var_dump($hash);
+
         $payload['hash'] = $hash;
         $payload["hashType"] = "sha256";
 

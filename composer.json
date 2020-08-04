@@ -1,6 +1,6 @@
 {
-  "name": "seerbit/seerbit-php-v1",
-  "description": "SeerBit API Library for PHP (Version 2)",
+  "name": "seerbit/seerbit-php-sdk",
+  "description": "SeerBit API PHP SDK",
   "version": "2.0.0",
   "keywords": ["seerbit", "payment","api"],
   "homepage": "https://seerbit.com",
@@ -12,17 +12,16 @@
   }],
   "require": {
     "php" : ">=5.5.0",
-    "guzzlehttp/guzzle": "~6.0",
     "ext-curl": "*",
     "ext-json": "*",
-    "ext-mbstring": "*",
-    "phpunit/phpunit": "^7.5"
+    "ext-mbstring": "*"
   },
   "require-dev": {
     "monolog/monolog": "^1.25",
     "php-coveralls/php-coveralls": "^2.1",
     "squizlabs/php_codesniffer": "^3.3",
-    "symfony/process": "~3.4"
+    "symfony/process": "~3.4",
+    "phpunit/phpunit": "^7.5"
   },
   "autoload": {
     "psr-4": {"Seerbit\\": "src/Seerbit"}
