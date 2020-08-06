@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="merge">
+    <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/seerbit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/seerbit.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Mobile/Authorize.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Mobile/Authorize.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Mobile/Networks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Mobile/Networks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Order/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Order/Create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/ChargeSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/ChargeSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/CreateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/CreateSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/GetCustomerSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/GetCustomerSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/GetMerchantSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/GetMerchantSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/UpdateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/UpdateSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Resources/Banks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Resources/Banks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Request/MomoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/MomoTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,11 +24,6 @@
     </execution>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
@@ -86,13 +77,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
   </component>
   <component name="ProjectId" id="1V7L508KUjFojUiNX3pcqNC4F7n" />
@@ -127,27 +111,6 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.ResourcesTest.testBanksList">
-    <configuration name="MomoTest.testMomoNetworks" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Seerbit\Request\MomoTest" file="$PROJECT_DIR$/tests/Request/MomoTest.php" method="testMomoNetworks" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ResourcesTest.testBanksList" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Seerbit\Request\ResourcesTest" file="$PROJECT_DIR$/tests/Request/ResourcesTest.php" method="testBanksList" scope="Method" />
-      <method v="2" />
-    </configuration>
-    <configuration name="StandardTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Seerbit\Request\StandardTest" file="$PROJECT_DIR$/tests/Request/StandardTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="PHPUnit.ResourcesTest.testBanksList" />
-        <item itemvalue="PHPUnit.MomoTest.testMomoNetworks" />
-        <item itemvalue="PHPUnit.StandardTest" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -173,6 +136,14 @@
       <workItem from="1579869078458" duration="2757000" />
       <workItem from="1590834837339" duration="316000" />
     </task>
+    <task id="LOCAL-00001" summary="Merge branch 'v2'&#10;&#10;# Conflicts:&#10;#&#9;composer.json&#10;#&#9;readme.md">
+      <created>1596716659552</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596716659552</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,5 +161,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Merge branch 'v2'&#10;&#10;# Conflicts:&#10;#&#9;composer.json&#10;#&#9;readme.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'v2'&#10;&#10;# Conflicts:&#10;#&#9;composer.json&#10;#&#9;readme.md" />
   </component>
 </project>
