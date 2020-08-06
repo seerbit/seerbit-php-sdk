@@ -6,30 +6,114 @@ namespace Seerbit\Service\Card;
 use Seerbit\Client;
 use Seerbit\Service\ITransformable;
 use Seerbit\Service\TransactionService;
+use Seerbit\Service\Validators\CardValidator;
 
 class CardService extends TransactionService implements ITransformable
 {
 
-    private $token;
     private $result;
+    private $_client;
 
-    public function __construct(Client $client, $token)
+    public function __construct(Client $client)
     {
         parent::__construct($client);
-        $this->token = $token;
+        $this->_client = $client;
 
     }
 
-    public function Authorize($payload){
+    public function AuthorizeOneTime($payload){
+        CardValidator::AuthorizeOnetime($payload);
+        $this->setRequiresToken(false);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/authorise",$payload);
+        return $this;
+    }
+
+    public function AuthorizeWithToken($payload){
+        CardValidator::AuthorizeWithToken($payload);
+        $this->setRequiresToken(false);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/authorise",$payload);
+        return $this;
+    }
+
+    public function Capture($payload){
+        CardValidator::Capture($payload);
+        $this->setRequiresToken(false);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/capture",$payload);
+        return $this;
+    }
+
+    public function Cancel($payload){
+        CardValidator::Cancel($payload);
+        $this->setRequiresToken(false);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/cancel",$payload);
+        return $this;
+    }
+
+    public function Refund($payload){
+        CardValidator::Refund($payload);
+        $this->setRequiresToken(false);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/refund",$payload);
+        return $this;
+    }
+
+    public function CaptureNoAuth($payload){
+        CardValidator::CaptureNoAuth($payload);
         $this->setRequiresToken(true);
-        $payload['public_key'] = $this->getClient()->getPublicKey();
-        $this->result = $this->postRequest("sbt/api/card/v1/init/transaction",$payload, $this->token);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/sale",$payload);
+        return $this;
+    }
+
+    public function ChargeNon3DOneTime($payload){
+        CardValidator::ChargeNon3DOneTime($payload);
+        $this->setRequiresToken(false);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/charge",$payload);
+        return $this;
+    }
+
+    public function ChargeNon3DSWithToken($payload){
+        CardValidator::ChargeNon3DSWithToken($payload);
+        $this->setRequiresToken(false);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/charge",$payload);
+        return $this;
+    }
+
+    public function Charge3D($payload){
+        CardValidator::Charge3D($payload);
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/initiates",$payload);
+        return $this;
+    }
+
+    public function Tokenize($payload){
+        CardValidator::Tokenize($payload);
+        $this->setRequiresToken(false);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/tokenize",$payload);
+        return $this;
+    }
+
+    public function Charge3DS($payload){
+        CardValidator::ChargeNon3DS($payload);
+        $this->setRequiresToken(true);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/initiates",$payload);
         return $this;
     }
 
     public function ValidateOtp($payload){
+        CardValidator::Validate($payload);
         $this->setRequiresToken(true);
-        $this->result = $this->postRequest("sbt/api/card/v1/validate/otp",$payload, $this->token);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/otp",$payload, $this->token);
         return $this;
     }
 

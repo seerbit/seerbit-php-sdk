@@ -28,6 +28,9 @@ class Seerbit implements ISeerbit{
     // @var string|null The version of the SeerBit API to use for requests.
     public static $apiVersion = null;
 
+    /**
+     * @return mixed
+     */
     public static function getPublicKey()
     {
         return self::$publicKey;

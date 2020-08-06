@@ -1,13 +1,12 @@
 <?php
 
-
-namespace Seerbit\Service\Status;
+namespace Seerbit\Service\Mobile;
 
 use Seerbit\Client;
 use Seerbit\Service\ITransformable;
 use Seerbit\Service\TransactionService;
 
-class TransactionStatusService extends TransactionService implements ITransformable
+class MobileService extends TransactionService implements ITransformable
 {
 
     private $result;
@@ -17,15 +16,17 @@ class TransactionStatusService extends TransactionService implements ITransforma
         parent::__construct($client);
     }
 
-    public function ValidateTransactionStatus($transaction_reference){
+    public function Authorize($payload){
         $this->setRequiresToken(true);
-        $this->result = $this->getRequest("payments/query/".$transaction_reference);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->postRequest("payments/initiates",$payload);
         return $this;
     }
 
-    public function ValidateSubscriptionStatus($billingId){
+    public function Networks(){
         $this->setRequiresToken(true);
-        $this->result = $this->getRequest("recurring/billingId/".$billingId);
+        $payload['publicKey'] = $this->getClient()->getPublicKey();
+        $this->result = $this->getRequest("networks");
         return $this;
     }
 

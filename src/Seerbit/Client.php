@@ -9,7 +9,7 @@ class Client{
 
     const VERSION = '0.0.1';
     const ENDPOINT_PILOT = "https://pilot-backend.seerbitapi.com/";
-    const ENDPOINT_LIVE = "https://seerbitapi.com/";
+    const ENDPOINT_LIVE = "https://seerbitapi.com/api/v2/";
 
     private $config;
 
@@ -33,9 +33,19 @@ class Client{
         $this->config->set('publicKey', $publicKey);
     }
 
-    public function setPrivateKey($publicKey)
+    public function setToken($token)
     {
-        $this->config->set('privateKey', $publicKey);
+        $this->config->set('token', $token);
+    }
+
+    public function setAuthType($type)
+    {
+        $this->config->set('authType', $type);
+    }
+
+    public function setSecretKey($secretKey)
+    {
+        $this->config->set('secretKey', $secretKey);
     }
 
     public function setUsername($username)
@@ -63,9 +73,19 @@ class Client{
         return $this->config->get('publicKey');
     }
 
-    public function getPrivateKey()
+    public function getToken()
     {
-        return $this->config->get('privateKey');
+        return $this->config->get('token');
+    }
+
+    public function getAuthType()
+    {
+        return $this->config->get('authType');
+    }
+
+    public function getSecretKey()
+    {
+        return $this->config->get('secretKey');
     }
 
     public function setConfig($config)
@@ -106,15 +126,6 @@ class Client{
 //        $this->logger = $logger;
     }
 
-    public function setInputType($value)
-    {
-        $this->config->set('inputType', $value);
-    }
-
-    public function setOutputType($value)
-    {
-        $this->config->set('outputType', $value);
-    }
 
     public function setTimeout($value)
     {
@@ -138,11 +149,12 @@ class Client{
 
     protected function createDefaultLogger()
     {
-
             $logger = new Logger('seerbit-php-api-library');
+        try {
             $logger->pushHandler(new StreamHandler(dirname(__FILE__) . '/app.log', Logger::DEBUG));
-            return $logger;
-
+        } catch (\Exception $e) {
+        }
+        return $logger;
     }
 
 

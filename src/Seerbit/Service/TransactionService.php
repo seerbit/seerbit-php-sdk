@@ -2,10 +2,7 @@
 
 namespace Seerbit\Service;
 
-
 use \Seerbit\HttpClient\CurlClient;
-use Seerbit\Service\IAuthenticate;
-use Seerbit\Service\IService;
 
 class TransactionService implements IService
 {
@@ -22,7 +19,6 @@ class TransactionService implements IService
         $msg = null;
         $this->httpClient = new CurlClient();
 
-
         if (!$client->getConfig()->get('environment')) {
             // throw exception
             $msg = "The Client does not have a correct environment, use " . \Seerbit\Environment::PILOT . ' or ' . \Seerbit\Environment::LIVE;
@@ -36,9 +32,9 @@ class TransactionService implements IService
             throw new \Seerbit\SeerbitException($msg);
         }
 
-        if (!$client->getConfig()->get('privateKey')) {
+        if (!$client->getConfig()->get('secretKey')) {
             // throw exception
-            $msg = "The client does not have a merchant private key. Set a private key using the Client.";
+            $msg = "The client does not have a merchant secret key. Set a secret key using the Client.";
             throw new \Seerbit\SeerbitException($msg);
         }
 
@@ -50,20 +46,33 @@ class TransactionService implements IService
         return $this->client;
     }
 
-    protected function postRequest($endpoint,$params, $token = null){
-        return $this->httpClient->POST(
-            $this,
-            $this->client->getConfig()->get('endpoint'). $endpoint,
-            $params,
-            $token);
+    protected function postRequest($endpoint,$params){
+            return $this->httpClient->POST(
+                $this,
+                $this->client->getConfig()->get('endpoint') . $endpoint,
+                $params,
+                $this->client->getToken(),
+                $this->client->getAuthType()
+            );
     }
 
-    protected function getRequest($endpoint, $token = null){
+    protected function getRequest($endpoint){
+            return $this->httpClient->GET(
+                $this,
+                $this->client->getConfig()->get('endpoint') . $endpoint,
+                $this->client->getToken(),
+                $this->client->getAuthType()
+                );
+    }
 
-        return $this->httpClient->GET(
+    protected function putRequest($endpoint,$params){
+        return $this->httpClient->POST(
             $this,
-            $this->client->getConfig()->get('endpoint'). $endpoint,
-            $token);
+            $this->client->getConfig()->get('endpoint') . $endpoint,
+            $params,
+            $this->client->getToken(),
+            $this->client->getAuthType()
+        );
     }
 
 

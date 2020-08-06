@@ -1,7 +1,7 @@
 {
   "name": "seerbit/seerbit-php-sdk",
-  "description": "SeerBit API Library for PHP SDK ",
-  "version": "1.0.0",
+  "description": "SeerBit API PHP SDK",
+  "version": "2.0.0",
   "keywords": ["seerbit", "payment","api"],
   "homepage": "https://seerbit.com",
   "license": ["MIT"],
@@ -14,10 +14,10 @@
     "php" : ">=5.5.0",
     "ext-curl": "*",
     "ext-json": "*",
-    "ext-mbstring": "*"
+    "ext-mbstring": "*",
+    "monolog/monolog": "^1.25"
   },
   "require-dev": {
-    "monolog/monolog": "^1.25",
     "php-coveralls/php-coveralls": "^2.1",
     "squizlabs/php_codesniffer": "^3.3",
     "symfony/process": "~3.4",

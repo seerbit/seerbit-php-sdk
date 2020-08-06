@@ -25,3 +25,7 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /Applications/MAMP/htdocs/seerbit/src/index.php on line 25
+[29-Jun-2020 13:26:47 UTC] PHP Fatal error:  Uncaught Error: Call to a member function toArray() on null in /Applications/MAMP/htdocs/seerbit/src/index.php:25
+Stack trace:
+#0 {main}
+  thrown in /Applications/MAMP/htdocs/seerbit/src/index.php on line 25
