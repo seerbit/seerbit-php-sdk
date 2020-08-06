@@ -1,6 +1,7 @@
 /vendor/*
-/tests/*
 .phpunit.result.cache
 composer_2.phar
 composer.phar
 composer.lock
+.idea/*
+src/Seerbit/app.log

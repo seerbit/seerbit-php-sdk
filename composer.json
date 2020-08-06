@@ -1,8 +1,7 @@
 {
   "name": "seerbit/seerbit-php-sdk",
   "description": "SeerBit API PHP SDK",
-  "version": "2.0.0",
-  "keywords": ["seerbit", "payment","api"],
+  "keywords": ["seerbit", "payment","api","payment_gateway"],
   "homepage": "https://seerbit.com",
   "license": ["MIT"],
   "authors": [{
