@@ -24,7 +24,7 @@ class MomoTest extends TestCase
 
 
         //Instantiate Mobile Money Service
-        $service = New MobileService($client,$token);
+        $service = New MobileService($client);
 
         $result = $service->Networks();
 

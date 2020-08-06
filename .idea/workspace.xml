@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+    <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="merge">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Mobile/Authorize.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Mobile/Authorize.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Mobile/Networks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Mobile/Networks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Order/Create.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Order/Create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/ChargeSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/ChargeSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/CreateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/CreateSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/GetCustomerSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/GetCustomerSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/GetMerchantSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/GetMerchantSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/UpdateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/UpdateSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Resources/Banks.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Resources/Banks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Request/MomoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/MomoTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,13 +127,23 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.ResourcesTest.testBanksList">
+    <configuration name="MomoTest.testMomoNetworks" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Seerbit\Request\MomoTest" file="$PROJECT_DIR$/tests/Request/MomoTest.php" method="testMomoNetworks" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ResourcesTest.testBanksList" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Seerbit\Request\ResourcesTest" file="$PROJECT_DIR$/tests/Request/ResourcesTest.php" method="testBanksList" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="StandardTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Seerbit\Request\StandardTest" file="$PROJECT_DIR$/tests/Request/StandardTest.php" scope="Class" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.ResourcesTest.testBanksList" />
+        <item itemvalue="PHPUnit.MomoTest.testMomoNetworks" />
         <item itemvalue="PHPUnit.StandardTest" />
       </list>
     </recent_temporary>
