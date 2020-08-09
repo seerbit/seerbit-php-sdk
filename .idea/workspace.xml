@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Account/Validate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Account/Validate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/GetMerchantSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/GetMerchantSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/Seerbit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Seerbit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/Service/Recurrent/RecurrentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Service/Recurrent/RecurrentService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Seerbit/Service/Standard/StandardService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Service/Standard/StandardService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Request/AccountTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/AccountTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Request/MomoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/MomoTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Request/RecurrentTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/RecurrentTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -103,14 +98,14 @@
     <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Seerbit/Service/Refund" />
       <recent name="$PROJECT_DIR$/src/Seerbit/Service" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/Seerbit" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -148,11 +143,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.MomoTest.testMomoNetworks" />
-        <item itemvalue="PHPUnit.RecurrentTest.testCreate" />
-        <item itemvalue="PHPUnit.AccountTest.testAccountOtpValidation" />
-        <item itemvalue="PHPUnit.RecurrentTest.testMerchantSubscription" />
         <item itemvalue="PHPUnit.StandardTest.testInitialize" />
+        <item itemvalue="PHPUnit.RecurrentTest.testMerchantSubscription" />
+        <item itemvalue="PHPUnit.RecurrentTest.testCreate" />
+        <item itemvalue="PHPUnit.MomoTest.testMomoNetworks" />
+        <item itemvalue="PHPUnit.AccountTest.testAccountOtpValidation" />
       </list>
     </recent_temporary>
   </component>
