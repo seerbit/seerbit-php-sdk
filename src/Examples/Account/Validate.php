@@ -12,7 +12,7 @@ try{
     $client = new Client();
     $client->setToken($token);
     $client->setEnvironment(\Seerbit\Environment::LIVE);
-
+    $client->setAuthType(\Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
     $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");

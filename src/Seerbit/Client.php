@@ -14,6 +14,7 @@ class Client{
     private $config;
 
     private $logger;
+    private $logger_path = "";
 
     public function __construct()
     {
@@ -120,10 +121,14 @@ class Client{
         return $this->config->get('version');
     }
 
-
     public function setLoggerPath($path)
     {
-//        $this->logger = $logger;
+        $this->logger_path = $path;
+    }
+
+    public function setLogger($logger)
+    {
+        $this->logger = $logger;
     }
 
 
@@ -131,7 +136,6 @@ class Client{
     {
         $this->config->set('timeout', $value);
     }
-
 
     public function getTimeout()
     {
@@ -151,7 +155,7 @@ class Client{
     {
             $logger = new Logger('seerbit-php-api-library');
         try {
-            $logger->pushHandler(new StreamHandler(dirname(__FILE__) . '/app.log', Logger::DEBUG));
+            $logger->pushHandler(new StreamHandler(($this->logger_path ? $this->logger_path : dirname(__FILE__) ) . '/seerbit.log', Logger::DEBUG));
         } catch (\Exception $e) {
         }
         return $logger;

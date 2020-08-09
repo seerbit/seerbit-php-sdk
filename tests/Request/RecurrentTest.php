@@ -138,9 +138,7 @@ class RecurrentTest extends TestCase
         //Instantiate Mobile Money Service
         $service = New RecurrentService($client);
 
-        $customerId = "55T442W";
-
-        $transaction = $service->GetMerchantSubscription($customerId);
+        $transaction = $service->GetMerchantSubscription();
 
         $this->assertArrayHasKey("httpStatus",$transaction->toArray());
 

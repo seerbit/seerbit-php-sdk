@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a144a1eb-eea4-44fa-8515-f564e62f1251" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/seerbit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/seerbit.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Account/Validate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Account/Validate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Examples/Recurrent/GetMerchantSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Examples/Recurrent/GetMerchantSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Seerbit/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Seerbit/Seerbit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Seerbit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Seerbit/Service/Recurrent/RecurrentService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Service/Recurrent/RecurrentService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Seerbit/Service/Standard/StandardService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Seerbit/Service/Standard/StandardService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Request/AccountTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/AccountTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Request/MomoTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/MomoTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Request/RecurrentTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Request/RecurrentTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +26,11 @@
     </execution>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
@@ -77,6 +84,13 @@
       <path value="$PROJECT_DIR$/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
   </component>
   <component name="ProjectId" id="1V7L508KUjFojUiNX3pcqNC4F7n" />
@@ -86,7 +100,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON&#10;PHP" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -110,6 +124,37 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="PHPUnit.MomoTest.testMomoNetworks">
+    <configuration name="AccountTest.testAccountOtpValidation" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Seerbit\Request\AccountTest" file="$PROJECT_DIR$/tests/Request/AccountTest.php" method="testAccountOtpValidation" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="MomoTest.testMomoNetworks" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Seerbit\Request\MomoTest" file="$PROJECT_DIR$/tests/Request/MomoTest.php" method="testMomoNetworks" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RecurrentTest.testCreate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Seerbit\Request\RecurrentTest" file="$PROJECT_DIR$/tests/Request/RecurrentTest.php" method="testCreate" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RecurrentTest.testMerchantSubscription" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Seerbit\Request\RecurrentTest" file="$PROJECT_DIR$/tests/Request/RecurrentTest.php" method="testMerchantSubscription" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="StandardTest.testInitialize" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Seerbit\Request\StandardTest" file="$PROJECT_DIR$/tests/Request/StandardTest.php" method="testInitialize" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.MomoTest.testMomoNetworks" />
+        <item itemvalue="PHPUnit.RecurrentTest.testCreate" />
+        <item itemvalue="PHPUnit.AccountTest.testAccountOtpValidation" />
+        <item itemvalue="PHPUnit.RecurrentTest.testMerchantSubscription" />
+        <item itemvalue="PHPUnit.StandardTest.testInitialize" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />

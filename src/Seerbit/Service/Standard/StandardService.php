@@ -23,7 +23,7 @@ class StandardService extends TransactionService implements ITransformable
 
     public function Initialize($payload){
         StandardValidator::Initialize($payload);
-        $this->setRequiresToken(false);
+        $this->setRequiresToken(true);
         $payload['publicKey'] = $this->getClient()->getPublicKey();
         $hash_string_build = "";
         foreach ($payload as $key => $value){

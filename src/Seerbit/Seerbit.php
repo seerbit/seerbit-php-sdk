@@ -63,7 +63,7 @@ class Seerbit implements ISeerbit{
     }
 
     /**
-     * @return float Maximum delay between retries, in seconds, that will be respected from the Stripe API
+     * @return float Maximum delay between retries, in seconds, that will be respected from the Seerbit API
      */
     public static function getMaxRetryAfter()
     {
