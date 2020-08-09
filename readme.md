@@ -18,9 +18,7 @@ PHP 5.5 or higher
 
 ## Installation ##
 You can use Composer or simply Download the Release
-
 ### Composer ###
-
 The preferred method is via [composer](https://getcomposer.org). Follow the composer
 [installation instructions](https://getcomposer.org/doc/00-intro.md) if you do not already have
 composer installed.
