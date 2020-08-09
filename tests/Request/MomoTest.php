@@ -15,6 +15,7 @@ class MomoTest extends TestCase
         //Instantiate SeerBit Client
         $client = new Client();
         $client->setToken($token);
+        $client->setLoggerPath(dirname(__FILE__));
         //Configure SeerBit Client
         $client->setEnvironment(\Seerbit\Environment::LIVE);
 

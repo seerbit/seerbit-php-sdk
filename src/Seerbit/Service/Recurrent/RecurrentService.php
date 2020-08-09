@@ -50,7 +50,7 @@ class RecurrentService extends TransactionService implements ITransformable
         return $this;
     }
 
-    public function GetMerchantSubscription($customerId){
+    public function GetMerchantSubscription(){
         $this->setRequiresToken(true);
         $payload['publicKey'] = $this->getClient()->getPublicKey();
         $this->result = $this->getRequest("recurring/publicKey/".$this->getClient()->getPublicKey());

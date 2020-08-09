@@ -23,9 +23,7 @@ try {
     //Instantiate Mobile Money Service
     $service = New RecurrentService($client);
 
-    $customerId = "55T442W";
-
-    $transaction = $service->GetMerchantSubscription($customerId);
+    $transaction = $service->GetMerchantSubscription();
 
     header('Content-Type: application/json');
     echo($transaction->toJson());

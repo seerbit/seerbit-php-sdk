@@ -54,6 +54,7 @@ class AccountTest extends TestCase
         $client = new Client();
         $client->setToken($token);
         $client->setEnvironment(\Seerbit\Environment::LIVE);
+        $client->setAuthType(\Seerbit\AuthType::BEARER);
 
 
         //SETUP CREDENTIALS
