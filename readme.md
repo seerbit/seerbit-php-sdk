@@ -91,6 +91,15 @@ try{
 ```
 Find more examples [**here**](./src/Examples) 
 
+## Configure Logger ##
+````php
+//Set Logger path
+$client->setLoggerPath(dirname(__FILE__));
+
+//Set custom Logger
+$client->setLogger = $->CustomLoggerService();
+````
+
 ## Documentation ##
 * https://doc.seerbit.com/
 
