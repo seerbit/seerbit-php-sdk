@@ -5,3 +5,6 @@ composer.phar
 composer.lock
 .idea/*
 src/Seerbit/app.log
+src/Seerbit/seerbit.log
+/.idea
+tests/
