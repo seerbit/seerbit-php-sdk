@@ -6,4 +6,9 @@ composer.lock
 .idea/*
 src/Seerbit/app.log
 src/Seerbit/seerbit.log
+<<<<<<< HEAD
 build
+=======
+/.idea
+tests/
+>>>>>>> v2

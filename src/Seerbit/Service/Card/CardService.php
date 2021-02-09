@@ -85,7 +85,7 @@ class CardService extends TransactionService implements ITransformable
         return $this;
     }
 
-    public function Charge3D($payload){
+    public function ChargeWithoutPin($payload){
         CardValidator::Charge3D($payload);
         $this->setRequiresToken(true);
         $payload['publicKey'] = $this->getClient()->getPublicKey();
@@ -101,7 +101,7 @@ class CardService extends TransactionService implements ITransformable
         return $this;
     }
 
-    public function Charge3DS($payload){
+    public function ChargeWithPin($payload){
         CardValidator::ChargeNon3DS($payload);
         $this->setRequiresToken(true);
         $payload['publicKey'] = $this->getClient()->getPublicKey();

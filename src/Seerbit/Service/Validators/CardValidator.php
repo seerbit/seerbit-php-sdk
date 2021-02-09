@@ -185,7 +185,7 @@ class CardValidator
         }
     }
 
-    public static function Charge3D(array $payload){
+    public static function ChargeWithoutPin(array $payload){
         if (!array_key_exists("amount",$payload)) {
             throw new \InvalidArgumentException('amount should not be empty');
         }
@@ -219,7 +219,7 @@ class CardValidator
         }
     }
 
-    public static function ChargeNon3DS(array $payload){
+    public static function ChargeWithPin(array $payload){
         if (!array_key_exists("amount",$payload)) {
             throw new \InvalidArgumentException('amount should not be empty');
         }

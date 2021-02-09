@@ -14,6 +14,7 @@ class StandardTest extends TestCase
         $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
         //Instantiate SeerBit Client
         $client = new Client();
+        $client->setLoggerPath(dirname(__FILE__));
         $client->setToken($token);
         //Configure SeerBit Client
         $client->setEnvironment(\Seerbit\Environment::LIVE);
