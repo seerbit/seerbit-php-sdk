@@ -8,3 +8,4 @@ src/Seerbit/app.log
 src/Seerbit/seerbit.log
 /.idea
 tests/
+.env

@@ -20,8 +20,8 @@ class ResourcesTest extends TestCase
         $client->setAuthType(\Seerbit\AuthType::BEARER);
 
         //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client->setPublicKey($_ENV['PUBLIC_KEY']);
+        $client->setSecretKey($_ENV['SECRET_KEY']);
 
         //Instantiate Resource Service
         $card_service =  New ResourceService($client);

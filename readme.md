@@ -45,12 +45,12 @@ composer require seerbit/seerbit-php-sdk
 
 ### Examples ###
 
-Validate a transaction:
+Start a Standard transaction:
 
 ```php
 
 try{
-    $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
+    $token = "YOUR MERCHANT TOKEN";
     //Instantiate SeerBit Client
     $client = new Client();
     $client->setToken($token);
@@ -59,8 +59,8 @@ try{
     $client->setAuthType(\Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
-    $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-    $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+    $client->setPublicKey("YOUR_PUBLIC_KEY");
+    $client->setSecretKey("YOUR_SECRE_KEY");
 
     //Instantiate Resource Service
     $standard_service =  New StandardService($client);
@@ -87,6 +87,9 @@ try{
     echo $exception->getMessage();
 }
 
+
+```
+Generate Token here: https://doc.seerbit.com/development-resources/hash/key-encrpyt
 
 ```
 Find more examples [**here**](./src/Examples) 

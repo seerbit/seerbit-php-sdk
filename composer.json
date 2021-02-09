@@ -14,7 +14,7 @@
     "ext-curl": "*",
     "ext-json": "*",
     "ext-mbstring": "*",
-    "monolog/monolog": "^1.25"
+    "monolog/monolog": ">=1.16"
   },
   "require-dev": {
     "php-coveralls/php-coveralls": "^2.1",

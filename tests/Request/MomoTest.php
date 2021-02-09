@@ -20,8 +20,8 @@ class MomoTest extends TestCase
         $client->setEnvironment(\Seerbit\Environment::LIVE);
 
         //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client->setPublicKey($_ENV['PUBLIC_KEY']);
+        $client->setSecretKey($_ENV['SECRET_KEY']);
 
 
         //Instantiate Mobile Money Service
