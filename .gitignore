@@ -7,5 +7,6 @@ composer.lock
 src/Seerbit/app.log
 src/Seerbit/seerbit.log
 /.idea
-tests/
+tests/seerbit.log
 .env
+*.bak

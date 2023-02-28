@@ -11,23 +11,16 @@ class CardTest extends TestCase
 {
 
     public function testCardAuthorizeOnetime(){
-        //Instantiate SeerBit Client
-        $client = new Client();
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BASIC);
 
-        $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-        $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
-
+        $client = TestHelper::SeerBitServiceBasic();
         //Instantiate Card Service
         $card_service =  New CardService($client);
         $uuid = bin2hex(random_bytes(6));
         $transaction_ref = strtoupper(trim($uuid));
 
         $json = '{
-        "currency": "KES",
-	    "country": "KE",
+        "currency": "NGN",
+	    "country": "NG",
         "cardNumber":"5123450000000008",
         "expiryMonth":"06",
         "expiryYear":"21",
@@ -48,14 +41,7 @@ class CardTest extends TestCase
     }
 
     public function testCardAuthorizeWithToken(){
-        //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BASIC);
-        $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-        $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
+        $client = TestHelper::SeerBitServiceBasic();
 
         //Instantiate Card Service
         $card_service =  New CardService($client);
@@ -63,8 +49,8 @@ class CardTest extends TestCase
         $transaction_ref = strtoupper(trim($uuid));
 
         $json = '{
-        "currency": "KES",
-	    "country": "KE",
+        "currency": "NGN",
+	    "country": "NG",
         "cardToken":"tk_1d67fb8a-ee8f-4fad-80e7-c30d2d20e7c4",
         "amount":"100.00",
         "email":"anonshopper@gmail.com",
@@ -83,20 +69,14 @@ class CardTest extends TestCase
 
     public function testCardCapture(){
         //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BASIC);
-        $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-        $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
+        $client = TestHelper::SeerBitServiceBasic();
 
         //Instantiate Card Service
         $card_service =  New CardService($client);
 
         $json = '{
-	    "currency":"KES",
-	    "country":"KE",
+	    "currency":"NGN",
+	    "country":"NG",
 	    "amount":"100.00"
         }';
 
@@ -112,19 +92,13 @@ class CardTest extends TestCase
 
     public function testCardCancel(){
         //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BASIC);
-        $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-        $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
+        $client = TestHelper::SeerBitServiceBasic();
 
         //Instantiate Card Service
         $card_service =  New CardService($client);
 
         $json = '{
-	    "country":"KE"
+	    "country":"NG"
         }';
 
         $payload = json_decode($json, true);
@@ -139,12 +113,7 @@ class CardTest extends TestCase
 
     public function testCardRefund(){
         //Instantiate SeerBit Client
-        $client = new Client();
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BASIC);
-        $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-        $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
+        $client = TestHelper::SeerBitServiceBasic();
 
         //Instantiate Card Service
         $card_service =  New CardService($client);
@@ -167,14 +136,7 @@ class CardTest extends TestCase
 
     public function testTokenize(){
         //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BASIC);
-
-        $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-        $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
+        $client = TestHelper::SeerBitServiceBasic();
 
         $uuid = bin2hex(random_bytes(6));
         $transaction_ref = strtoupper(trim($uuid));
@@ -183,9 +145,9 @@ class CardTest extends TestCase
         $card_service =  New CardService($client);
 
         $json = '{
-        "fullName":"Victor Ighalo",
-        "currency": "KES",
-	    "country": "KE",
+        "fullName":"Sam King",
+        "currency": "NGN",
+	    "country": "NG",
         "cardNumber":"5123450000000008",
         "expiryMonth":"06",
         "expiryYear":"21"
@@ -203,14 +165,7 @@ class CardTest extends TestCase
 
     public function testNon3DSOneTime(){
         //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BASIC);
-        $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-        $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
-
+        $client = TestHelper::SeerBitServiceBasic();
 
         //Instantiate Card Service
         $card_service =  New CardService($client);
@@ -243,14 +198,7 @@ class CardTest extends TestCase
 
     public function testNon3DWithToken(){
         //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BASIC);
-        $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-        $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
-
+        $client = TestHelper::SeerBitServiceBasic();
 
         //Instantiate Card Service
         $card_service =  New CardService($client);
