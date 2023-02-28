@@ -1,12 +1,12 @@
 {
   "name": "seerbit/seerbit-php-sdk",
-  "description": "SeerBit API PHP SDK",
+  "description": "SeerBit PHP Library",
   "keywords": ["seerbit", "payment","api"],
   "homepage": "https://seerbit.com",
   "license": ["MIT"],
   "authors": [{
-    "name": "Victor Ighalo",
-    "email": "victorighalo@gmail.com",
+    "name": "SeerBit",
+    "email": "developers@seerbit.com",
     "role": "Developer"
   }],
   "require": {
