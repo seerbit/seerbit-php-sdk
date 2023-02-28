@@ -12,18 +12,7 @@ class AccountTest extends TestCase
 {
 
     public function testAccountAuthentication(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-        $client->setToken($token);
-
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BEARER);
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
-
+        $client = TestHelper::SeerBitServiceBearer();
 
         $card_service =  New AccountService($client);
         $uuid = bin2hex(random_bytes(6));
@@ -49,17 +38,7 @@ class AccountTest extends TestCase
     }
 
     public function testAccountOtpValidation(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-        $client->setToken($token);
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BEARER);
-
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client = TestHelper::SeerBitServiceBearer();
 
         $card_service =  New AccountService($client);
 

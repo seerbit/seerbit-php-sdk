@@ -11,18 +11,7 @@ class RecurrentTest extends TestCase
 {
 
     public function testCreate(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setToken($token);
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BEARER);
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client = TestHelper::SeerBitServiceBearer();
 
         $uuid = bin2hex(random_bytes(6));
         $transaction_ref = strtoupper(trim($uuid));
@@ -42,7 +31,7 @@ class RecurrentTest extends TestCase
         "productDescription":"Medium HM",
         "productId":"mhmo",
         "country":"NG",
-        "startDate":"2019-01-11",
+        "startDate":"2023-03-11 12:00:00",
         "cardName":"Bola Olat",
         "billingCycle":"DAILY",
         "email":"johndoe@gmail.com",
@@ -61,18 +50,7 @@ class RecurrentTest extends TestCase
     }
 
     public function testCharge(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setToken($token);
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BEARER);
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client = TestHelper::SeerBitServiceBearer();
 
         //Instantiate Service
         $service = New RecurrentService($client);
@@ -96,18 +74,7 @@ class RecurrentTest extends TestCase
     }
 
     public function testCustomerSubscription(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setToken($token);
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BEARER);
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client = TestHelper::SeerBitServiceBearer();
 
         //Instantiate Service
         $service = New RecurrentService($client);
@@ -122,18 +89,7 @@ class RecurrentTest extends TestCase
     }
 
     public function testMerchantSubscription(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setToken($token);
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BEARER);
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client = TestHelper::SeerBitServiceBearer();
 
         //Instantiate Mobile Money Service
         $service = New RecurrentService($client);
@@ -146,18 +102,7 @@ class RecurrentTest extends TestCase
     }
 
     public function testUpdateSubscription(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-
-        //Configure SeerBit Client
-        $client->setToken($token);
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-        $client->setAuthType(\Seerbit\AuthType::BEARER);
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client = TestHelper::SeerBitServiceBearer();
 
         //Instantiate Mobile Money Service
         $service = New RecurrentService($client);

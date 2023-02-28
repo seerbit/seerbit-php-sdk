@@ -1,31 +1,27 @@
+
 <div align="center">
- <img width="400" valign="top" src="https://assets.seerbitapi.com/images/seerbit_logo_type.png">
+ <img width="200" valign="top" src="https://assets.seerbitapi.com/images/seerbit_logo_type.png">
 </div>
 
 
-<h1 align="center">
-  <img width="60" valign="bottom" src="https://www.php.net/images/logos/php-logo.svg">
-  - SeerBit
-</h1>
+# SeerBit PHP Library
 
-
-# SeerBit's API SDK for PHP (Version 2)
-
-SeerBit PHP SDK for easy integration with SeerBit's API.
+This library provides convenient access to the SeerBit API from PHP based applications. It provides Utility classses to access API resources on SeerBit.
 
 ## Integration
 The Library supports all APIs under the following services:
 
-* Standard API Checkout
-* Payment via API (card and account)
-* Recurrent
-* Pre-auth payment
-* Order
-* Mobile Money
-* Transaction Status
+* Standard Checkout
+* Payment via Card and Bank Account
+* Recurrent transactions
+* Card Tokenization
+* Pre-authorized payment
+* Order Payments
+* Mobile Money Payments
+* Transaction Validation
 
 ## Requirements
-PHP 5.5 or higher
+PHP 8
 
 ## Installation ##
 You can use Composer or simply Download the Release
@@ -43,9 +39,10 @@ Once composer is installed, execute the following command in your project root t
 composer require seerbit/seerbit-php-sdk
 ```
 
-### Examples ###
+### Find examples [**here**](./src/Examples) 
 
-Start a Standard transaction:
+#### Example 1 : Start a Standard transaction ###
+
 
 ```php
 
@@ -53,14 +50,14 @@ try{
     $token = "YOUR MERCHANT TOKEN";
     //Instantiate SeerBit Client
     $client = new Client();
-    $client->setToken($token);
+
     //Configure SeerBit Client
-    $client->setEnvironment(\Seerbit\Environment::LIVE);
+    $client->setToken($token);
     $client->setAuthType(\Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
-    $client->setPublicKey("YOUR_PUBLIC_KEY");
-    $client->setSecretKey("YOUR_SECRE_KEY");
+    $client->setPublicKey("YOUR_PUBLIC_KEY"); //AS REQUIRED
+    $client->setSecretKey("YOUR_SECRE_KEY"); //AS REQUIRED
 
     //Instantiate Resource Service
     $standard_service =  New StandardService($client);
@@ -86,13 +83,15 @@ try{
 }catch (\Exception $exception){
     echo $exception->getMessage();
 }
-
+```
 
 ```
-Generate Token here: https://doc.seerbit.com/development-resources/hash/key-encrpyt
+Generate Token here: https://www.doc.seerbit.com/resources/hash/key-encryption
 
 ```
-Find more examples [**here**](./src/Examples) 
+
+### Find more examples [**here**](./src/Examples) 
+
 
 ## Configure Logger ##
 ````php
@@ -107,7 +106,7 @@ $client->setLogger = $->CustomLoggerService();
 * https://doc.seerbit.com/
 
 ## Examples ##
-* https://doc.seerbit.com/
+[**Examples**](./src/Examples) 
 
 ### Changelog
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
@@ -116,12 +115,8 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 ## Support
 If you have any problems, questions or suggestions, create an issue here or send your inquiry to developers@seerbit.com.
 
-## Credits
-
-- [Victor Osas Ighalo](https://github.com/victorighalo)
-
 ## Contributing
-We strongly encourage you to join us in contributing to this repository so everyone can benefit from:
+We encourage you to join us in contributing to this repository so everyone can benefit from:
 * New features and functionality
 * Resolved bug fixes and issues
 * Any general improvements

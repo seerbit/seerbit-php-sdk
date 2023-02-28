@@ -1,7 +1,9 @@
 # Changelog
 
-All notable changes to `seerbit-laravel` will be documented in this file
-
-## 2.0.0 - 201X-XX-XX
+## 2.0.0 - 2021-04-01
 
 - initial release
+
+## 2.0.1 - 2023-02-28
+
+- addition of card tokenization service

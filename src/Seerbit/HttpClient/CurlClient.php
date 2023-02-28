@@ -10,7 +10,7 @@ class CurlClient implements IClient
 {
 
 
-    public function POST(IService $service, $requestUrl, $params = null, $token = null,$authType)
+    public function POST(IService $service, $requestUrl, $params = null, $token = null,$authType = \Seerbit\AuthType::BEARER)
     {
 
         $client = $service->getClient();
@@ -125,7 +125,7 @@ class CurlClient implements IClient
 
     }
 
-    public function GET(IService $service, $requestUrl, $token = null,$authType)
+    public function GET(IService $service, $requestUrl, $token = null,$authType = \Seerbit\AuthType::BEARER)
     {
 
         $client = $service->getClient();
@@ -233,7 +233,7 @@ class CurlClient implements IClient
 
     }
 
-    public function PUT(IService $service, $requestUrl, $params = null, $token = null,$authType)
+    public function PUT(IService $service, $requestUrl, $params = null, $token = null,$authType = \Seerbit\AuthType::BEARER)
     {
 
         $client = $service->getClient();

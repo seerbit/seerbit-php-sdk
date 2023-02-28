@@ -11,17 +11,7 @@ class MomoTest extends TestCase
 {
 
     public function testMomoNetworks(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-        $client->setToken($token);
-        $client->setLoggerPath(dirname(__FILE__));
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey($_ENV['PUBLIC_KEY']);
-        $client->setSecretKey($_ENV['SECRET_KEY']);
+        $client = TestHelper::SeerBitServiceBearer();
 
 
         //Instantiate Mobile Money Service
@@ -35,17 +25,7 @@ class MomoTest extends TestCase
     }
 
     public function testMomoAuthorize(){
-        $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
-        //Instantiate SeerBit Client
-        $client = new Client();
-        $client->setToken($token);
-        //Configure SeerBit Client
-        $client->setEnvironment(\Seerbit\Environment::LIVE);
-
-
-        //SETUP CREDENTIALS
-        $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-        $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+        $client = TestHelper::SeerBitServiceBearer();
 
         $uuid = bin2hex(random_bytes(6));
         $transaction_ref = strtoupper(trim($uuid));
