@@ -35,11 +35,7 @@ try{
 
     $transaction = $card_service->AuthorizeOneTime($payload);
 
-    $this->assertArrayHasKey("httpStatus",$transaction->toArray());
-
-    $this->assertEquals("201",$transaction->toArray()["httpStatus"]);
-
-        echo($transaction->toJson());
+    echo($transaction->toJson());
 
 }catch (\Exception $exception){
     echo $exception->getMessage();

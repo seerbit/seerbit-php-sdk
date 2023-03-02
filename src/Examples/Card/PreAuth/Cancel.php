@@ -11,7 +11,6 @@ try{
 
     //SETUP CREDENTIALS
     $client->setPublicKey("MERCHANT_PUBLIC_KEY");
-    $client->setSecretKey("MERCHANT_SECRET_KEY");
     
     //Instantiate Card Service
     $card_service =  New CardService($client);
@@ -25,7 +24,7 @@ try{
 
     $transaction = $card_service->Cancel($payload);
 
-        echo($transaction->toJson());
+    echo($transaction->toJson());
 
 
 }catch (\Exception $exception){

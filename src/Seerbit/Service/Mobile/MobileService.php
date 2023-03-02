@@ -25,7 +25,6 @@ class MobileService extends TransactionService implements ITransformable
 
     public function Networks(){
         $this->setRequiresToken(true);
-        $payload['publicKey'] = $this->getClient()->getPublicKey();
         $this->result = $this->getRequest("networks");
         return $this;
     }

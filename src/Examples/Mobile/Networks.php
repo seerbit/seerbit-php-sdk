@@ -17,7 +17,6 @@ try {
 
     //SETUP CREDENTIALS
     $client->setPublicKey("MERCHANT_PUBLIC_KEY");
-    $client->setSecretKey("MERCHANT_SECRET_KEY");
 
     //Instantiate Mobile Money Service
     $service = New MobileService($client);

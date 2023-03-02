@@ -11,7 +11,6 @@ try{
 
     //SETUP CREDENTIALS
     $client->setPublicKey("MERCHANT_PUBLIC_KEY");
-    $client->setSecretKey("MERCHANT_SECRET_KEY");
 
     //Instantiate Card Service
     $card_service =  New CardService($client);
@@ -26,7 +25,7 @@ try{
         }';
 
     $payload = json_decode($json, true);
-    $payload['paymentReference'] = $transaction_ref;
+    $payload['paymentReference'] = "3423232B232323";
 
     $transaction = $card_service->Tokenize($payload);
 

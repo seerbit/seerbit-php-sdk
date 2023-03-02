@@ -52,11 +52,10 @@ try{
 
     //Configure SeerBit Client
     $client->setToken($token);
-    $client->setAuthType(Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
-    $client->setPublicKey("YOUR_PUBLIC_KEY"); //AS REQUIRED
-    $client->setSecretKey("YOUR_SECRE_KEY"); //AS REQUIRED
+    $client->setPublicKey("MERCHANT_PUBLIC_KEY"); //REQUIRED
+    $client->setSecretKey("MERCHANT_SECRET_KEY"); //OPTIONAL
 
     //Instantiate Resource Service
     $standard_service =  New StandardService($client);
@@ -83,13 +82,32 @@ try{
     echo $exception->getMessage();
 }
 ```
+### Find more examples [**here**](./src/Examples)
+
+
+<u>How to Generate a Token?</u>
+```
+curl --location 'https://seerbitapi.com/api/v2/encrypt/keys' \
+--header 'Content-Type: application/json' \
+--data '{
+	"key": "merchantSecretKey.merchantPublicKey"
+}'
+```
+
+<u>Generate Token Response</u>
 
 ```
-Generate Token here: https://www.doc.seerbit.com/resources/hash/key-encryption
-
+{
+	"status": "SUCCESS",
+	"data": {
+			"code": "00",
+			"EncryptedSecKey": {
+					"encryptedKey": "SNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/"
+			},
+			"message": "Successful"
+	}
+}
 ```
-
-### Find more examples [**here**](./src/Examples) 
 
 
 ## Configure Logger ##

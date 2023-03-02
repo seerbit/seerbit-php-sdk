@@ -15,9 +15,7 @@ class Tokenization
             $client = new Client();
         
             //Configure SeerBit Client
-            $client->setAuthType(Seerbit\AuthType::Bearer);
-            $client->setPublicKey("PLUBLIC_KEY");
-            $client->setSecretKey("SECRET_KEY");
+            $client->setPublicKey("MERCHANT_PUBLIC_KEY");
         
             $service =  New TokenizeService($client);
 
@@ -43,6 +41,7 @@ class Tokenization
                 $payload['tokenize'] = true;
         
                 $transaction = $service->CreateToken($payload);
+                echo $transaction->toJson();
         
         }catch (\Exception $exception){
             echo $exception->getMessage();
@@ -55,7 +54,7 @@ class Tokenization
             $client = new Client();
         
             //Configure SeerBit Client
-            $client->setAuthType(Seerbit\AuthType::Bearer);
+            $client->setAuthType(Seerbit\AuthType::BEARER);
             $client->setPublicKey("PLUBLIC_KEY");
             $client->setSecretKey("SECRET_KEY");
 
@@ -64,7 +63,7 @@ class Tokenization
             $transaction_reference = $reference; 
             // the reference is the same reference used when generating a token
             $transaction = $service->GetToken($transaction_reference);
-        
+            echo $transaction->toJson();
         }catch (\Exception $exception){
             echo $exception->getMessage();
         }
@@ -76,7 +75,7 @@ class Tokenization
             $client = new Client();
         
             //Configure SeerBit Client
-            $client->setAuthType(Seerbit\AuthType::Bearer);
+            $client->setAuthType(Seerbit\AuthType::BEARER);
             $client->setPublicKey("PLUBLIC_KEY");
             $client->setSecretKey("SECRET_KEY");
 
@@ -92,7 +91,7 @@ class Tokenization
             //$authorizationCode is gotten from the get token service
         
             $transaction = $service->ChargeToken($charge_token_payload);
-        
+            echo $transaction->toJson();
         }catch (\Exception $exception){
             echo $exception->getMessage();
         }
@@ -104,7 +103,7 @@ class Tokenization
             $client = new Client();
         
             //Configure SeerBit Client
-            $client->setAuthType(Seerbit\AuthType::Bearer);
+            $client->setAuthType(Seerbit\AuthType::BEARER);
             $client->setPublicKey("PLUBLIC_KEY");
             $client->setSecretKey("SECRET_KEY");
 
@@ -122,7 +121,7 @@ class Tokenization
             ];
         
             $transaction = $service->ChargeTokenBulk($charge_token_payload);
-        
+            echo $transaction->toJson();
         }catch (\Exception $exception){
             echo $exception->getMessage();
         }

@@ -15,7 +15,6 @@ try{
 
     //SETUP CREDENTIALS
     $client->setPublicKey("MERCHANT_PUBLIC_KEY");
-    $client->setSecretKey("MERCHANT_SECRET_KEY");
 
     //Instantiate Resource Service
     $standard_service =  New StandardService($client);
