@@ -7,7 +7,7 @@ class Config implements IConfig
     /**
      * @var array
      */
-    protected $data = array();
+    protected $data = array('environment' => 'live');
 
     /**
      * @var array

@@ -8,7 +8,7 @@ use Seerbit\Service\ITransformable;
 use Seerbit\Service\TransactionService;
 use Seerbit\Service\Validators\StandardValidator;
 
-class StandardService extends TransactionService implements ITransformable
+class StandardService extends TransactionService implements ITransformable, StandardServiceContract
 {
 
     private $result;
@@ -24,6 +24,8 @@ class StandardService extends TransactionService implements ITransformable
     public function Initialize($payload){
         StandardValidator::Initialize($payload);
         $this->setRequiresToken(true);
+        $this->_client->setAuthType(\Seerbit\AuthType::BEARER);
+
         $payload['publicKey'] = $this->getClient()->getPublicKey();
         $hash_string_build = "";
         foreach ($payload as $key => $value){

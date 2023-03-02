@@ -7,16 +7,16 @@ use Seerbit\Service\Order\OrderService;
 require __DIR__ . '/../../../vendor/autoload.php';
 
 try {
-    $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
+    $token = "MERCHANT_TOKEN";
     //Instantiate SeerBit Client
     $client = new Client();
-    $client->setToken($token);
+
     //Configure SeerBit Client
-    $client->setEnvironment(\Seerbit\Environment::LIVE);
+    $client->setToken($token);
 
     //SETUP CREDENTIALS
-    $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-    $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+    $client->setPublicKey("MERCHANT_PUBLIC_KEY");
+    $client->setSecretKey("MERCHANT_SECRET_KEY");
 
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));

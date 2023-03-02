@@ -15,7 +15,7 @@ class Tokenization
             $client = new Client();
         
             //Configure SeerBit Client
-            $client->setAuthType(\Seerbit\AuthType::Bearer);
+            $client->setAuthType(Seerbit\AuthType::Bearer);
             $client->setPublicKey("PLUBLIC_KEY");
             $client->setSecretKey("SECRET_KEY");
         
@@ -55,7 +55,7 @@ class Tokenization
             $client = new Client();
         
             //Configure SeerBit Client
-            $client->setAuthType(\Seerbit\AuthType::Bearer);
+            $client->setAuthType(Seerbit\AuthType::Bearer);
             $client->setPublicKey("PLUBLIC_KEY");
             $client->setSecretKey("SECRET_KEY");
 
@@ -76,7 +76,7 @@ class Tokenization
             $client = new Client();
         
             //Configure SeerBit Client
-            $client->setAuthType(\Seerbit\AuthType::Bearer);
+            $client->setAuthType(Seerbit\AuthType::Bearer);
             $client->setPublicKey("PLUBLIC_KEY");
             $client->setSecretKey("SECRET_KEY");
 
@@ -104,7 +104,7 @@ class Tokenization
             $client = new Client();
         
             //Configure SeerBit Client
-            $client->setAuthType(\Seerbit\AuthType::Bearer);
+            $client->setAuthType(Seerbit\AuthType::Bearer);
             $client->setPublicKey("PLUBLIC_KEY");
             $client->setSecretKey("SECRET_KEY");
 

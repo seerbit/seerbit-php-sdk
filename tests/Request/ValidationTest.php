@@ -19,7 +19,7 @@ class ValidationTest extends TestCase
         //Instantiate Mobile Money Service
         $service = New TransactionStatusService($client);
 
-        $transaction = $service->ValidateTransactionStatus("E5F0D63203B2");
+        $transaction = $service->ValidateTransactionStatus("1677784262280");
         $this->assertArrayHasKey("httpStatus",$transaction->toArray());
 
         $this->assertEquals("200",$transaction->toArray()["httpStatus"]);

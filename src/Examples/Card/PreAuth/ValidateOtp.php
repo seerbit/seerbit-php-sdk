@@ -7,17 +7,17 @@ use Seerbit\Service\Card\CardService;
 require __DIR__ . '/../../../vendor/autoload.php';
 
 try {
-    $token ="pCEdKBei+5OLwaCamMlyct9dtHGFUyT35MVQZ5rYaQ5e6Eoj1amt/25WK8ZCWqN4ZPQlgar953PgHorH1RUoAJB6ZK5k5d+yAjmN0EcYpDSDQeEMMZuvUHZVXcXHwRyW";
+    $token = "MERCHANT_TOKEN";
     //Instantiate SeerBit Client
     $client = new Client();
-    $client->setToken($token);
-    //Configure SeerBit Client
-    $client->setEnvironment(\Seerbit\Environment::LIVE);
-    $client->setAuthType(\Seerbit\AuthType::BEARER);
 
-    //PRODUCTION CREDENTIALS
-    $client->setPublicKey("SBTESTPUBK_PjQ5dFOi522L383MlsQYUMAe6cZYviTF");
-    $client->setTimeout(20);//OPTIONAL
+    //Configure SeerBit Client
+    $client->setToken($token);
+
+    //SETUP CREDENTIALS
+    $client->setPublicKey("MERCHANT_PUBLIC_KEY");
+    $client->setSecretKey("MERCHANT_SECRET_KEY");
+
 
     //Instantiate Card Service
     $card_service =  New CardService($client);
@@ -31,8 +31,8 @@ try {
      //Decode to associated array
      $payload = json_decode($json, true);
 
-        //Validate OTP
-        $transaction = $card_service->ValidateOtp($payload);
+    //Validate OTP
+    $transaction = $card_service->ValidateOtp($payload);
     header('Content-Type: application/json');
     echo($transaction->toJson());
 

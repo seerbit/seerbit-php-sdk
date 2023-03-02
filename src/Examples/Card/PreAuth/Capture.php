@@ -10,11 +10,9 @@ try {
     //Instantiate SeerBit Client
     $client = new Client();
 
-    //Configure SeerBit Client
-    $client->setEnvironment(\Seerbit\Environment::LIVE);
-    $client->setAuthType(\Seerbit\AuthType::BASIC);
-    $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-    $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
+    //SETUP CREDENTIALS
+    $client->setPublicKey("MERCHANT_PUBLIC_KEY");
+    $client->setSecretKey("MERCHANT_SECRET_KEY");
 
     //Instantiate Card Service
     $card_service =  New CardService($client);
