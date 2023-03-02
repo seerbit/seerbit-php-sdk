@@ -43,7 +43,6 @@ composer require seerbit/seerbit-php-sdk
 
 #### Example 1 : Start a Standard transaction ###
 
-
 ```php
 
 try{
@@ -53,7 +52,7 @@ try{
 
     //Configure SeerBit Client
     $client->setToken($token);
-    $client->setAuthType(\Seerbit\AuthType::BEARER);
+    $client->setAuthType(Seerbit\AuthType::BEARER);
 
     //SETUP CREDENTIALS
     $client->setPublicKey("YOUR_PUBLIC_KEY"); //AS REQUIRED

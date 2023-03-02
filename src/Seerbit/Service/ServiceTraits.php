@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Seerbit\Service\Traits;
+namespace Seerbit\Service;
 
 
 trait ServiceTraits

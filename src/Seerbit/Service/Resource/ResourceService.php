@@ -21,6 +21,7 @@ class ResourceService extends TransactionService implements ITransformable
 
     public function GetBankList(){
         $this->setRequiresToken(false);
+        $this->client->setAuthType(\Seerbit\AuthType::BEARER);
         $this->result = $this->getRequest("banks/merchant/".$this->getClient()->getPublicKey());
         return $this;
     }

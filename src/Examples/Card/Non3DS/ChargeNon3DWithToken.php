@@ -9,12 +9,9 @@ try{
     //Instantiate SeerBit Client
     $client = new Client();
 
-    //Configure SeerBit Client
-    $client->setEnvironment(\Seerbit\Environment::LIVE);
-    $client->setAuthType(\Seerbit\AuthType::BASIC);
-    $client->setPublicKey("SBTESTPUBK_E9CFg6iZ2uSFr8YK7C2KTontiysQRnMm");
-    $client->setSecretKey("SBTESTSECK_V1ahfeTQAsyi3OaJXbMmrKNB8KTW5dyCRdUnILnw");
-
+    //SETUP CREDENTIALS
+    $client->setPublicKey("MERCHANT_PUBLIC_KEY");
+    $client->setSecretKey("MERCHANT_SECRET_KEY");
 
     //Instantiate Card Service
     $card_service =  New CardService($client);
@@ -27,7 +24,7 @@ try{
         "currency":"NGN",
         "country":"NG",
         "email":"johndoe@gmail.com",
-	    "cardToken":"tk_e4cae021-e2ce-4b59-9b1e-3f859cefd800"
+	    "cardToken":"CUSTOMER_CARD_TOKEN"
         }';
 
     $payload = json_decode($json, true);

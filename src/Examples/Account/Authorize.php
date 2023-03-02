@@ -6,18 +6,16 @@ use Seerbit\Service\Account\AccountService;
 require __DIR__ . '/../../../vendor/autoload.php';
 
 try{
-    $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
+    $token = "MERCHANT_TOKEN";
     //Instantiate SeerBit Client
     $client = new Client();
+
+    //Configure SeerBit Client
     $client->setToken($token);
 
-    $client->setEnvironment(\Seerbit\Environment::LIVE);
-    $client->setAuthType(\Seerbit\AuthType::BEARER);
-
     //SETUP CREDENTIALS
-    $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-    $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
-
+    $client->setPublicKey("MERCHANT_PUBLIC_KEY");
+    $client->setSecretKey("MERCHANT_SECRET_KEY");
 
     $card_service =  New AccountService($client);
     $uuid = bin2hex(random_bytes(6));

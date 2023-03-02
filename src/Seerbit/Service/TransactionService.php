@@ -7,7 +7,7 @@ use \Seerbit\HttpClient\CurlClient;
 class TransactionService implements IService
 {
 
-    private $client;
+    protected $client;
 
     private $httpClient;
 

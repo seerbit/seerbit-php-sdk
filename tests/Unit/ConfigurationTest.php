@@ -14,11 +14,11 @@ class ConfigurationTest extends TestCase
 
     public function testSetKeys(){
         $client = new Client();
-        $client->setPrivateKey("SBSECK_DWZ6LTTJW78LFT1LIXNBFDFIMBJJ3NLASDTCO8IP");
-        $client->setPublicKey("SBPUBK_ES14RXZQ2IRICCPUYWHFC8BJNTHK1IML");
+        $client->setPrivateKey("MERCHANT_SECRET_KEY");
+        $client->setPublicKey("MERCHANT_PUBLIC_KEY");
 
-        $this->assertEquals("SBSECK_DWZ6LTTJW78LFT1LIXNBFDFIMBJJ3NLASDTCO8IP", $client->getPrivateKey());
-        $this->assertEquals("SBPUBK_ES14RXZQ2IRICCPUYWHFC8BJNTHK1IML", $client->getPublicKey());
+        $this->assertEquals("MERCHANT_SECRET_KEY", $client->getPrivateKey());
+        $this->assertEquals("MERCHANT_PUBLIC_KEY", $client->getPublicKey());
     }
 
 

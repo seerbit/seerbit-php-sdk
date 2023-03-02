@@ -4,7 +4,6 @@ namespace Seerbit\Request;
 
 
 use PHPUnit\Framework\TestCase;
-use Seerbit\Client;
 use Seerbit\Service\Standard\StandardService;
 
 class StandardTest extends TestCase
@@ -29,7 +28,8 @@ class StandardTest extends TestCase
         "email" => "customer@email.com",
         "paymentReference" => $transaction_ref,
         "productDescription" => "product_description",
-        "productId" => "64310880-2708933-427"
+        "productId" => "64310880-2708933-427",
+        "tokenize" => true //optional
         ];
 
         $transaction = $standard_service->Initialize($payload);

@@ -6,20 +6,20 @@ use Seerbit\Service\Standard\StandardService;
 require __DIR__ . '/../../../vendor/autoload.php';
 
 try{
-    $token = "1KWLzpZkWaoXO9AN4qweKwqLjGcQSNt8kjeVjsdTG4lPlwg6sTvpVAay2RA7hoCEzHPkIQa+MNfDepx4VBr5JMgLb5Q5anq9XoN2pXU850bumqBWFVw1T1ZW5w8N+Sq/";
+    $token = "MERCHANT_TOKEN";
     //Instantiate SeerBit Client
     $client = new Client();
-    $client->setToken($token);
+
     //Configure SeerBit Client
-    $client->setEnvironment(\Seerbit\Environment::LIVE);
-    $client->setAuthType(\Seerbit\AuthType::BEARER);
+    $client->setToken($token);
 
     //SETUP CREDENTIALS
-    $client->setPublicKey("SBTESTPUBK_p8GqvFSFNCBahSJinczKd9aIPoRUZfda");
-    $client->setSecretKey("SBTESTSECK_kFgKytQK1KSvbR616rUMqNYOUedK3Btm5igZgxaZ");
+    $client->setPublicKey("MERCHANT_PUBLIC_KEY");
+    $client->setSecretKey("MERCHANT_SECRET_KEY");
 
     //Instantiate Resource Service
     $standard_service =  New StandardService($client);
+
     $uuid = bin2hex(random_bytes(6));
     $transaction_ref = strtoupper(trim($uuid));
 
@@ -32,7 +32,8 @@ try{
         "email" => "customer@email.com",
         "paymentReference" => $transaction_ref,
         "productDescription" => "product_description",
-        "productId" => "64310880-2708933-427"
+        "productId" => "64310880-2708933-427",
+        "tokenize" => true, //optional
     ];
 
     $transaction = $standard_service->Initialize($payload);
