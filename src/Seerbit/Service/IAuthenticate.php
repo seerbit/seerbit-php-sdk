@@ -3,5 +3,5 @@ namespace Seerbit\Service;
 
 interface IAuthenticate
 {
-    public function Auth();
+//    public function Auth();
 }

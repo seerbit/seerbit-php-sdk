@@ -13,13 +13,13 @@ class Authenticate extends TransactionService implements IAuthenticate
 
     }
 
-    public function Auth(){
-        $client = $this->getClient();
-        $config = $client->getConfig();
-        $params = ['clientId' => $config->getPublicKey(),"clientSecret" => $config->getClientSecret()];
-        $this->result = $this->postRequest("sbt/api/v1/auth",$params);
-        return $this;
-    }
+//    public function Auth(){
+//        $client = $this->getClient();
+//        $config = $client->getConfig();
+//        $params = ['clientId' => $config->getPublicKey(),"clientSecret" => $config->getClientSecret()];
+//        $this->result = $this->postRequest("sbt/api/v1/auth",$params);
+//        return $this;
+//    }
 
     public function toArray(){
         return $this->result;
