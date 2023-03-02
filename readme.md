@@ -71,7 +71,8 @@ try{
         "email" => "customer@email.com",
         "paymentReference" => $transaction_ref,
         "productDescription" => "product_description",
-        "productId" => "64310880-2708933-427"
+        "productId" => "64310880-2708933-427",
+        "tokenize" => true //optional
     ];
 
     $transaction = $standard_service->Initialize($payload);
