@@ -11,3 +11,5 @@ src/Seerbit/Applications
 tests/seerbit.log
 .env
 *.bak
+*.cache
+.phpunit.cache

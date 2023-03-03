@@ -153,7 +153,7 @@ class Client{
 
     protected function createDefaultLogger()
     {
-            $logger = new Logger('seerbit-php-api-library');
+        $logger = new Logger('seerbit-php-api-library');
         try {
             $logger->pushHandler(new StreamHandler(($this->logger_path ? $this->logger_path : dirname(__FILE__) ) . '/seerbit.log', Logger::DEBUG));
         } catch (\Exception $e) {

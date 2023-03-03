@@ -21,7 +21,11 @@
 ## 2.3.1 - 2023-02-28
 
 - This version updates support for version 8.0 and above
-- 
-## 2.3.2 - 2023-03-02
 
+
+## 2.3.2 - 2023-03-02
 - Updates and bug fixes
+
+## 2.3.4 - 2023-03-03
+
+- Remove default log file being created on every request

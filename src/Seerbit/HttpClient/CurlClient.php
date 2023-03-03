@@ -9,8 +9,11 @@ use Seerbit\Service\IService;
 class CurlClient implements IClient
 {
 
-
-    public function POST(IService $service, $requestUrl, $params = null, $token = null,$authType = \Seerbit\AuthType::BEARER)
+    protected bool $shouldLog = false;
+    /**
+     * @throws SeerbitException
+     */
+    public function POST(IService $service, $requestUrl, $params = null, $token = null, $authType = \Seerbit\AuthType::BEARER)
     {
 
         $client = $service->getClient();
@@ -19,7 +22,7 @@ class CurlClient implements IClient
         $jsonRequest = json_encode($params);
 
         // log the request
-        $this->logRequest($logger, $requestUrl, $params);
+        $this->shouldLog && $this->logRequest($logger, $requestUrl, $params);
 
         //Initiate cURL.
         $ch = curl_init($requestUrl);
@@ -49,9 +52,9 @@ class CurlClient implements IClient
             }else{
                 if($authType === \Seerbit\AuthType::BASIC){
                     $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
-                    array_push($headers,'Authorization: Basic '.$key);
+                    $headers[] = 'Authorization: Basic ' . $key;
                 }else{
-                    array_push($headers,'Authorization: Bearer '.$token);
+                    $headers[] = 'Authorization: Bearer ' . $token;
                 }
 
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -62,15 +65,15 @@ class CurlClient implements IClient
             //Set the headers
             if($authType === \Seerbit\AuthType::BASIC){
                 $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
-                array_push($headers,'Authorization: Basic '.$key);
+                $headers[] = 'Authorization: Basic ' . $key;
             }else{
-                array_push($headers,'Authorization: Bearer '.$token);
+                $headers[] = 'Authorization: Bearer ' . $token;
             }
 
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
 
-        $logger->info("Request headers to SeerBit" . print_r($headers, 1));
+        $this->shouldLog && $logger->info("Request headers to SeerBit" . print_r($headers, 1));
 
         // return the result
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -80,7 +83,7 @@ class CurlClient implements IClient
 
 
         // log the raw response
-        $logger->info("JSON Response is: " . $result);
+        $this->shouldLog && $logger->info("JSON Response is: " . $result);
 
         // Get errors
         list($errno, $message) = $this->curlError($ch);
@@ -95,15 +98,15 @@ class CurlClient implements IClient
         }
 
         // log the array result
-        $logger->info('Params in response from SeerBit: ' . print_r(json_decode($result, true), 1));
+        $this->shouldLog && $logger->info('Params in response from SeerBit: ' . print_r(json_decode($result, true), 1));
 
         $result = json_decode($result, true);
 
         if (is_array($result) || is_object($result)){
             $msg = "";
-            $data = isset($result["data"]) ? $result["data"] : null;
+            $data = $result["data"] ?? null;
             if (is_null($data)){
-                $data = isset($result["networks"]) ? $result["networks"] : null;
+                $data = $result["networks"] ?? null;
             }
             if(isset($result["message"]) ){
                 $msg =  $result["message"];
@@ -125,7 +128,10 @@ class CurlClient implements IClient
 
     }
 
-    public function GET(IService $service, $requestUrl, $token = null,$authType = \Seerbit\AuthType::BEARER)
+    /**
+     * @throws SeerbitException
+     */
+    public function GET(IService $service, $requestUrl, $token = null, $authType = \Seerbit\AuthType::BEARER)
     {
 
         $client = $service->getClient();
@@ -133,7 +139,7 @@ class CurlClient implements IClient
         $logger = $client->getLogger();
 
         // log the request
-        $this->logRequest($logger, $requestUrl, null);
+        $this->shouldLog && $this->logRequest($logger, $requestUrl, null);
 
         //Initiate cURL.
         $ch = curl_init($requestUrl);
@@ -157,9 +163,9 @@ class CurlClient implements IClient
             }else{
                 if($authType === \Seerbit\AuthType::BASIC){
                     $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
-                    array_push($headers,'Authorization: Basic '.$key);
+                    $headers[] = 'Authorization: Basic ' . $key;
                 }else{
-                    array_push($headers,'Authorization: Bearer '.$token);
+                    $headers[] = 'Authorization: Bearer ' . $token;
                 }
 
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -170,16 +176,16 @@ class CurlClient implements IClient
             //Set the headers
             if($authType === \Seerbit\AuthType::BASIC){
                 $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
-                array_push($headers,'Authorization: Basic '.$key);
+                $headers[] = 'Authorization: Basic ' . $key;
             }else{
-                array_push($headers,'Authorization: Bearer '.$token);
+                $headers[] = 'Authorization: Bearer ' . $token;
             }
 
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
 
 
-        $logger->info("Request headers to Seerbit" . print_r($headers, 1));
+        $this->shouldLog && $logger->info("Request headers to Seerbit" . print_r($headers, 1));
 
         // return the result
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -189,7 +195,7 @@ class CurlClient implements IClient
 
 
         // log the raw response
-        $logger->info("JSON Response is: " . $result);
+        $this->shouldLog && $logger->info("JSON Response is: " . $result);
 
         // Get errors
         list($errno, $message) = $this->curlError($ch);
@@ -203,7 +209,7 @@ class CurlClient implements IClient
         }
 
         // log the array result
-        $logger->info('Params in response from Seerbit:' . print_r($result, 1));
+        $this->shouldLog && $logger->info('Params in response from Seerbit:' . print_r($result, 1));
 
         $result = json_decode($result, true);
 
@@ -233,7 +239,10 @@ class CurlClient implements IClient
 
     }
 
-    public function PUT(IService $service, $requestUrl, $params = null, $token = null,$authType = \Seerbit\AuthType::BEARER)
+    /**
+     * @throws SeerbitException
+     */
+    public function PUT(IService $service, $requestUrl, $params = null, $token = null, $authType = \Seerbit\AuthType::BEARER)
     {
 
         $client = $service->getClient();
@@ -242,7 +251,7 @@ class CurlClient implements IClient
         $jsonRequest = json_encode($params);
 
         // log the request
-        $this->logRequest($logger, $requestUrl, $params);
+        $this->shouldLog && $this->logRequest($logger, $requestUrl, $params);
 
         //Initiate cURL.
         $ch = curl_init($requestUrl);
@@ -273,9 +282,9 @@ class CurlClient implements IClient
             }else{
                 if($authType === \Seerbit\AuthType::BASIC){
                     $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
-                    array_push($headers,'Authorization: Basic '.$key);
+                    $headers[] = 'Authorization: Basic ' . $key;
                 }else{
-                    array_push($headers,'Authorization: Bearer '.$token);
+                    $headers[] = 'Authorization: Bearer ' . $token;
                 }
 
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
@@ -286,15 +295,15 @@ class CurlClient implements IClient
             //Set the headers
             if($authType === \Seerbit\AuthType::BASIC){
                 $key = base64_encode($client->getPublicKey().":".$client->getSecretKey());
-                array_push($headers,'Authorization: Basic '.$key);
+                $headers[] = 'Authorization: Basic ' . $key;
             }else{
-                array_push($headers,'Authorization: Bearer '.$token);
+                $headers[] = 'Authorization: Bearer ' . $token;
             }
 
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
 
-        $logger->info("Request headers to Seerbit" . print_r($headers, 1));
+        $this->shouldLog && $logger->info("Request headers to Seerbit" . print_r($headers, 1));
 
 
 
@@ -306,7 +315,7 @@ class CurlClient implements IClient
 
 
         // log the raw response
-        $logger->info("JSON Response is: " . $result);
+        $this->shouldLog && $logger->info("JSON Response is: " . $result);
 
         // Get errors
         list($errno, $message) = $this->curlError($ch);
@@ -346,33 +355,30 @@ class CurlClient implements IClient
 
     }
 
-    protected function handleCurlError($url,$result, $errno, $message, $logger)
+    /**
+     * @throws SeerbitException
+     */
+    protected function handleCurlError($url, $result, $errno, $message, $logger)
     {
-        switch ($errno) {
-            case CURLE_OK:
-                $msg = "Probably your Web Service username and/or password is incorrect";
-                break;
-            case CURLE_COULDNT_RESOLVE_HOST:
-            case CURLE_OPERATION_TIMEOUTED:
-                $msg = "Could not connect to Seerbit ($url).  Please check your "
-                    . "internet connection and try again.";
-                break;
-            case CURLE_SSL_CACERT:
-            case CURLE_SSL_PEER_CERTIFICATE:
-                $msg = "Could not verify Seerbit's SSL certificate.  Please make sure "
-                    . "that your network is not intercepting certificates.  "
-                    . "(Try going to $url in your browser.)  "
-                    . "If this problem persists,";
-                break;
-            default:
-                $msg = "Unexpected error communicating with Seerbit Server.";
-        }
+        $msg = match ($errno) {
+            CURLE_OK => "Probably your Web Service username and/or password is incorrect",
+            CURLE_COULDNT_RESOLVE_HOST, CURLE_OPERATION_TIMEOUTED => "Could not connect to Seerbit ($url).  Please check your "
+                . "internet connection and try again.",
+            CURLE_SSL_CACERT, CURLE_SSL_PEER_CERTIFICATE => "Could not verify Seerbit's SSL certificate.  Please make sure "
+                . "that your network is not intercepting certificates.  "
+                . "(Try going to $url in your browser.)  "
+                . "If this problem persists,",
+            default => "Unexpected error communicating with Seerbit Server.",
+        };
         $msg .= "\n(Network error [errno $errno]: $message)";
         $msg .= "\n(Network error [result $errno]: $result)";
-        $logger->error($msg);
-        throw new \Seerbit\ConnectionException($msg, $errno);
+        $this->shouldLog && $logger->error($msg);
+        throw new \Seerbit\SeerbitException($msg, $errno);
     }
 
+    /**
+     * @throws SeerbitException
+     */
     protected function handleResultError($result, $logger)
     {
 
@@ -380,7 +386,7 @@ class CurlClient implements IClient
 
         if ($result) {
             if (isset($decodeResult['message'])) {
-                $logger->error($decodeResult['message']);
+                $this->shouldLog && $logger->error($decodeResult['message']);
                 throw new SeerbitException(
                     $decodeResult['message'],
                     "-00",
@@ -389,10 +395,10 @@ class CurlClient implements IClient
                     time()
                 );
             }
-            $logger->error($result);
+            $this->shouldLog && $logger->error($result);
             throw new SeerbitException("Error making HTTP request to SeerBit server", 500, null, "Server Error", time());
         }else{
-            $logger->error($result);
+            $this->shouldLog && $logger->error($result);
             throw new SeerbitException("Error making HTTP request to SeerBit server", 500, null, "Server Error", time());
         }
     }
@@ -400,8 +406,8 @@ class CurlClient implements IClient
     private function logRequest(\Psr\Log\LoggerInterface $logger, $requestUrl, $params)
     {
         // log the requestUr, params and json request
-        $logger->info("Request url to SeerBit: " . $requestUrl);
-        $logger->info('JSON Request payload to SeerBit:' . json_encode($params));
+        $this->shouldLog && $logger->info("Request url to SeerBit: " . $requestUrl);
+        $this->shouldLog && $logger->info('JSON Request payload to SeerBit:' . json_encode($params));
     }
 
     protected function curlRequest($ch)
