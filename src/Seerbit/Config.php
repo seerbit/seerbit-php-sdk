@@ -7,7 +7,7 @@ class Config implements IConfig
     /**
      * @var array
      */
-    protected $data = array('environment' => 'live');
+    protected $data = array('environment' => 'live', 'endpoint' => 'https://seerbitapi.com/api/v2/');
 
     /**
      * @var array
