@@ -26,6 +26,5 @@
 ## 2.3.2 - 2023-03-02
 - Updates and bug fixes
 
-## 2.3.4 - 2023-03-03
-
-- Remove default log file being created on every request
+## 2.3.4 - 2023-03-13
+- Update transaction status validation

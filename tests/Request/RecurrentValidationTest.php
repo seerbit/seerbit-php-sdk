@@ -7,19 +7,18 @@ use PHPUnit\Framework\TestCase;
 use Seerbit\Client;
 use Seerbit\Service\Status\TransactionStatusService;
 
-class ValidationTest extends TestCase
+class RecurrentValidationTest extends TestCase
 {
 
     use TestHelper;
 
-    public function testTransactionValidateStatus()
+    public function testSubscriptionValidateStatus()
     {
-
         $client = TestHelper::SeerBitServiceBearer();
         //Instantiate Mobile Money Service
         $service = New TransactionStatusService($client);
 
-        $transaction = $service->ValidateTransactionStatus("SBT-T78693956103");
+        $transaction = $service->ValidateSubscriptionStatus("SBT-R78694421820");
         $this->assertArrayHasKey("httpStatus",$transaction->toArray());
 
         $this->assertEquals("200",$transaction->toArray()["httpStatus"]);

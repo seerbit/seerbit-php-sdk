@@ -46,29 +46,29 @@ class TransactionService implements IService
         return $this->client;
     }
 
-    protected function postRequest($endpoint,$params){
+    protected function postRequest($endpoint,$path){
             return $this->httpClient->POST(
                 $this,
-                $this->client->getConfig()->get('endpoint') . $endpoint,
+                $this->client->getConfig()->get('endpoint') . $path,
                 $params,
                 $this->client->getToken(),
                 $this->client->getAuthType()
             );
     }
 
-    protected function getRequest($endpoint){
+    protected function getRequest($path){
             return $this->httpClient->GET(
                 $this,
-                $this->client->getConfig()->get('endpoint') . $endpoint,
+                $this->client->getConfig()->get('endpoint') . $path,
                 $this->client->getToken(),
                 $this->client->getAuthType()
                 );
     }
 
-    protected function putRequest($endpoint,$params){
+    protected function putRequest($endpoint,$path){
         return $this->httpClient->POST(
             $this,
-            $this->client->getConfig()->get('endpoint') . $endpoint,
+            $this->client->getConfig()->get('endpoint') . $path,
             $params,
             $this->client->getToken(),
             $this->client->getAuthType()

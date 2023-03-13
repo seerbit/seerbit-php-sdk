@@ -24,6 +24,7 @@ class TransactionStatusService extends TransactionService implements ITransforma
     public function ValidateTransactionStatus(string $transaction_reference): static
     {
         $this->setRequiresToken(true);
+        $this->client->getConfig()->set('endpoint', "https://seerbitapi.com/api/v3/");
         $this->client->setAuthType(\Seerbit\AuthType::BEARER);
         $this->result = $this->getRequest("payments/query/".$transaction_reference);
         return $this;

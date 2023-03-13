@@ -17,8 +17,8 @@
     </testsuite>
   </testsuites>
   <php>
-    <env name="SEERBIT_PUBLIC_KEY" value="MERCHANT_PUBLIC_KEY"/>
-    <env name="SEERBIT_SECRET_KEY" value="MERCHANT_SECRET_KEY"/>
-    <env name="SEERBIT_TOKEN" value="MERCHANT_TOKEN"/>
+    <env name="SEERBIT_PUBLIC_KEY" value="SBPUBK_R0RRJIOLOICPJVDF5PLZTTUAOKHBCBXF"/>
+    <env name="SEERBIT_SECRET_KEY" value="SBSECK_VZZXPRI2ZB5D4D4GJRTQZO3SCCGYMUY4ZCVZYJLA"/>
+    <env name="SEERBIT_TOKEN" value="MuWdxMou5My6cw8OS/dhOn9zg7LBXQ5cFvK+8xxBad8wolEa1cnepf57Om2YSmZ3DoZ4QWA6HKm0ffV9P/kQHFESYy6fEs6VQKQ0ytYJPztCBFPJfYSztA1ksmKwsOr+"/>
   </php>
 </phpunit>
