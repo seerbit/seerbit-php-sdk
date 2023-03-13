@@ -1,7 +1,7 @@
 {
   "name": "seerbit/seerbit-php-sdk",
   "description": "SeerBit PHP Library",
-  "keywords": ["seerbit", "payment","api"],
+  "keywords": ["seerbit", "payment","api","payment gateway", "payment nigeria"],
   "homepage": "https://seerbit.com",
   "license": ["MIT"],
   "authors": [{
