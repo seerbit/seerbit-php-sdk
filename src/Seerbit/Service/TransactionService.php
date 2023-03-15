@@ -3,16 +3,20 @@
 namespace Seerbit\Service;
 
 use \Seerbit\HttpClient\CurlClient;
+use Seerbit\SeerbitException;
 
 class TransactionService implements IService
 {
 
-    protected $client;
+    protected \Seerbit\Client $client;
 
-    private $httpClient;
+    private CurlClient $httpClient;
 
-    protected $requiresToken = false;
+    protected bool $requiresToken = false;
 
+    /**
+     * @throws SeerbitException
+     */
     public function __construct(\Seerbit\Client $client)
     {
 
@@ -41,12 +45,16 @@ class TransactionService implements IService
         $this->client = $client;
     }
 
-    public function getClient()
+    public function getClient(): \Seerbit\Client
     {
         return $this->client;
     }
 
-    protected function postRequest($endpoint,$path){
+    /**
+     * @throws SeerbitException
+     */
+    protected function postRequest($path, $params): array
+    {
             return $this->httpClient->POST(
                 $this,
                 $this->client->getConfig()->get('endpoint') . $path,
@@ -56,7 +64,11 @@ class TransactionService implements IService
             );
     }
 
-    protected function getRequest($path){
+    /**
+     * @throws SeerbitException
+     */
+    protected function getRequest($path): array
+    {
             return $this->httpClient->GET(
                 $this,
                 $this->client->getConfig()->get('endpoint') . $path,
@@ -65,7 +77,11 @@ class TransactionService implements IService
                 );
     }
 
-    protected function putRequest($endpoint,$path){
+    /**
+     * @throws SeerbitException
+     */
+    protected function putRequest($path, $params): array
+    {
         return $this->httpClient->POST(
             $this,
             $this->client->getConfig()->get('endpoint') . $path,
@@ -76,7 +92,7 @@ class TransactionService implements IService
     }
 
 
-    public function requiresToken()
+    public function requiresToken(): bool
     {
         return $this->requiresToken;
     }

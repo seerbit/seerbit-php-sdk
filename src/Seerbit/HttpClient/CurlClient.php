@@ -9,7 +9,7 @@ use Seerbit\Service\IService;
 class CurlClient implements IClient
 {
 
-    protected bool $shouldLog = false;
+    protected bool $shouldLog = true;
     /**
      * @throws SeerbitException
      */
