@@ -28,3 +28,6 @@
 
 ## 2.3.4 - 2023-03-13
 - Update transaction status validation
+
+## 2.3.5 - 2023-03-15
+- Bug fixes
